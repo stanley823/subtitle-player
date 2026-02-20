@@ -1,0 +1,11 @@
+- Claude Code Tutorial #1 - Introduction & Setup - https://www.youtube.com/watch?v=SUysp3sJHbA
+- Claude Code Tutorial #2 - CLAUDE.md Files & _init - https://www.youtube.com/watch?v=i_OHQH4-M2Y
+- Claude Code Tutorial #3 - Context - https://www.youtube.com/watch?v=ob-mYGqqFQw
+- New Claude Code Masterclass! - https://www.youtube.com/watch?v=Lr37J1ZUeZI
+- Claude Code Tutorial #4 - Tools & Permissions - https://www.youtube.com/watch?v=TU0ZcDFq0e0
+- Claude Code Tutorial #5 - Planning & Thinking - https://www.youtube.com/watch?v=MTGJuu9CeMk
+- Claude Code Tutorial #6 - Slash Commands - https://www.youtube.com/watch?v=52KBhQqqHuc
+- Claude Code Tutorial #7 - MCP Servers - https://www.youtube.com/watch?v=X7lgIa6guKg
+- Claude Code Tutorial #8 - Subagents - https://www.youtube.com/watch?v=Phr7vBx9yFQ
+- Claude Code Tutorial #9 - Claude Code with GitHub - https://www.youtube.com/watch?v=7pKN_pjPW04
+- Claude Code Tutorial #10 - Final Thoughts & Tips - https://www.youtube.com/watch?v=cCHPjvswTpQ

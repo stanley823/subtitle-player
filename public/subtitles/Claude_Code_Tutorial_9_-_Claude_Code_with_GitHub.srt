@@ -1,0 +1,68 @@
+1
+00:00:01,920 --> 00:00:28,640
+All right then, gang.So I want to move away from prompting context commands and sub agents now and move on to another nice feature in Claude Code, which is the Claude Code GitHub app.And this is something we can set up easily from within the Claude Code chat session.And I'm going to show you how to do that in a moment.But basically, when we install it, creates 2 GitHub actions for us automatically, which are both really useful.The first one is that it can auto review pull requests and provide feedback on those pull requests.
+
+2
+00:00:29,040 --> 00:00:54,800
+The second one allows Claude code to automatically work on issues on a new feature branch when you mention @claude inside it.Now, before I show you how to set up this feature, I will say that you need to have the GitHub CLI already installed on your computer, which you can do by following these installation instructions.So I'm going to leave a link to this repo down below the video.But essentially, you can just install it via something like Homebrew on a Mac or WinGet on Windows.
+
+3
+00:00:55,200 --> 00:01:24,400
+It's all really simple to do, and it outlines the steps in this README file.Once you've installed the GitHub CLI, you'll also need to log in by running this command in your terminal, GH auth login.Once you've done that, you're ready to set up the Claude Code GitHub app.All right, so inside Claude Code, we can use a built-in slash command, which is forward slash install hyphen GitHub app.and I'm going to press enter here.What that does is set up the GitHub actions for the repository that we want to give it access to.
+
+4
+00:01:24,400 --> 00:01:51,280
+So I'm going to press enter and then it's going to ask us which repository we want to use.We can enter a different one if we want, but I'm going to use the one linked up to this local repo right here that I'm in.So I'm going to press enter on this option.Then it's going to open a browser and it's going to ask us to install Claude code on GitHub.So let's click the install button over here.We need to authorize it.Now you can choose toit access to all repositories or only select repositories.
+
+5
+00:01:51,280 --> 00:01:57,200
+I'm just going to select this one to give it access to the Claude Code tutorial one, which is this down here.
+
+6
+00:01:58,480 --> 00:02:24,400
+And then I'm going to install and authorize this.And then once you've authenticated it and installed it on your GitHub account, you can just come back to the terminal and press enter to complete this.And it says select GitHub workflows to install.We're going to install both of them.I'm just going to press enter andAnd then we're just going to choose the first option here, create a long-lived token with your Claude subscription.It's going to ask you to authorize with your Claude code account.So I'm going to do that.
+
+7
+00:02:25,280 --> 00:02:36,720
+Once you've authenticated with Anthropic, it's going to ask you to create this pull request.And this is basically two actions that it's created.It explains everything down here.We can just create this pull request.
+
+8
+00:02:38,200 --> 00:03:02,480
+And then one of the actions is to automatically review pull requests, and down here we're just waiting for some checks to be completed.Once they've completed, you can merge that request, and now up here, if we go to actions, we should be able to see we've got these two actions right here: Claude Code and Claude Code Review.Okay, so now we're ready to put Claude Code to use in the GitHub repository.
+
+9
+00:03:02,840 --> 00:03:27,360
+And I'm going to create an issue in a second, and the issue is going to be that this title over here doesn't link to anywhere, and ideally, it should link to this page, the homepage.So let's create an issue and tell Claude Code to handle this.All right then, so let's head to issues, and we're going to create a new issue.We'll just say link from title missing, and then I'll say there is no
+
+10
+00:03:27,920 --> 00:03:48,560
+link from the title in navbar to the homepage.All right, so I'm going to create this issue.Now, nothing happens automatically, but if I come down here and mention Claude, I can just say at Claude and I'll say, can you fix this?
+
+11
+00:03:50,120 --> 00:03:56,080
+I'm going to comment over here and hopefully just after a minute or so, Claude is going to start work on this task.
+
+12
+00:03:58,120 --> 00:04:01,760
+And you can see now Claude has picked it up and it's starting to work on this issue.
+
+13
+00:04:03,040 --> 00:04:21,760
+All right, so it's created this little to-do list, much like it does in Claude code within the terminal, and it's looking at the different things it needs to do, examining the current navbar, adding the link for the title, it's going to test it, then it's going to commit and push the changes, then it's also going to provide a PR creation link, which we can go and take a look at.
+
+14
+00:04:22,640 --> 00:04:50,840
+All right, so it's finished its little to-do list now, and there's a summary down here to say that it's fixed it and any changes that have been made.It's also created the PR, or rather it gives us a link to create the PR based on this edit.So, if we go there, it's pre-populated this description and also the title for the PR.I'm going to create this pull request.And when we create a pull request, Claude Code automatically picks up on the pull request and provides us with a code review.
+
+15
+00:04:50,840 --> 00:05:15,600
+And you can see now down here, the Claude Code review is going in the background.Okay, so now it's finished each review and we can see the feedback down here.We get a big green tick, which means it's pretty good overall.So we get a tick for code quality, a tick for bugs, a tick for performance and security.Overall, it says approve.Yep.All right, so let's go down here.We can merge the pull request now and confirm the merge.
+
+16
+00:05:16,800 --> 00:05:41,240
+Okay, so I just pulled down those changes so we can preview this in a browser.And now if we hover over this title, you can see it goes purple, we get the little pointer icon, and if we click on it, it goes to the homepage.Awesome.So that's now working.So then that's how Claude Code can work directly in your central GitHub repository.And I think it's quite a nice addition to the product.You can also make additional actions, by the way, to include Claude Code in different ways and different workflows.
+
+17
+00:05:41,240 --> 00:05:45,120
+So it's definitely worth looking through the action files and playing around with them.
+

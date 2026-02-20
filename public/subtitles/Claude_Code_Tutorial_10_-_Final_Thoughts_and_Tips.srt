@@ -1,0 +1,60 @@
+1
+00:00:00,560 --> 00:00:24,480
+Alright then gang, we have reached the end of the series and I really hope you've enjoyed it and maybe you're seeing the benefit of adding Claude code into your own development workflow now.I do want to end the course on a few final thoughts, words of caution and just a little bit of advice for using Claude code and also some shortcuts and tips near the end of the video as well.So first of all, and I think I've stressed this throughout the videos quite a lot already, always check the code yourself.
+
+2
+00:00:25,040 --> 00:00:51,680
+AI can make mistakes sometimes, so be sure it's correct.Don't automatically assume everything it does is right.Checking the code yourself also helps to keep you in the loop, understand your code base, and know how everything is fitting together.And that's going to really help in the future if you do ever need to do some manual debugging or code edits.Secondly, context is key when you're using any kind of AI tool like Claude Code.
+
+3
+00:00:52,080 --> 00:01:17,280
+And I don't just mean bombard the model with context about everything.I mean, be smart about your context.Keep it focused, concise where you can, and keep the context history lean where possible to keep the model on track.Don't be afraid to clear the context or start a new session if it ever gets bloated.And as a rule of thumb, I tend to clear the context and start over whenever I work on a new feature or task.And finally, I would say don't rely on AI to do everything for you.
+
+4
+00:01:17,280 --> 00:01:46,960
+Yes, it can be good as a coding assistant and loads more things.I'd probably compare it to maybe having a junior or even a mid-level developer working alongside you.But if you use it too often and rely on it for every single problem, it's going to turn you into a lazy programmer who might not learn new skills and even forget current ones because you're not using them.And on that same note, I would also say this.A lot of coders right now think AI is going to replace them.And I think that's not true for several reasons right now.
+
+5
+00:01:47,600 --> 00:02:16,000
+I do think the way we code will be different and AI will certainly play a big role in whatever the landscape looks like in the future.But I don't think, at least not yet, it's in any position to completely replace web developers.And in fact, I think AI just brings more opportunities to developers.Think of all the new types of applications and programs that are being developed that incorporate AI.MCP servers, agents, custom AI integrations, even developing sites and APIs with AI usage and security in mind.
+
+6
+00:02:16,400 --> 00:02:44,480
+All those things are now being developed, and I think that brings a whole new level of opportunity for web developers to specialize in.I also think because we will be getting a whole swathe of applications built almost entirely using AI, unfortunately, there's still going to be a big call for coders who can go into the weeds, understand theand manually work on it.And for all these reasons, I think learning to code is arguably more important now than it was before.Anyway, now my part in wisdom is out of the way.
+
+7
+00:02:44,640 --> 00:03:13,920
+Let's end on a few shortcuts that we can use within Claude Code to make life working with it a little bit easier.Alright, so first of all, you can use the up and down arrow keys to cycle through previous prompts to see them if you want to send a previous prompt again.There's another one.If you press escape, then you can clear out the chat.Also, if youinto something say we use a tool like or not tool sorry a command like mcp you can always press escape to exit out of these windows and it goes back to the chat.
+
+8
+00:03:14,800 --> 00:03:26,000
+You can also use the question mark to go into bash mode so now you can run bash commands so for example I could say git status and it's going to run that command for us exactly so it's on branch main and
+
+9
+00:03:27,120 --> 00:03:53,040
+You can double escape.I think I might have shown this in a previous lesson, but you can double escape to go to previous sections of the chats.I could go back to this one if I wanted to, or this one, and it's going to take me back to that point in the chat, and it's going to clear out any history beyond that.If I press double escape now, then you can see there's no chats after this current one.Down here at the bottom, there is this little hint here that says question mark for shortcuts.
+
+10
+00:03:53,120 --> 00:04:16,480
+If I press question mark, you're going to see some of those shortcuts that we've seen as well.So this was the bash mode I just showed you, this for tools, this for file paths for adding context, and this to memorize something inside the Claude.md file.Okay then my friends, so that just about wraps it up.If you enjoyed this series, please don't forget to give the videos a thumbs up and subscribe to the channel.Maybe share the videos if you're feeling kind as well.
+
+11
+00:04:16,800 --> 00:04:43,200
+And please let me know in the comments if you would like more Claude code courses in the future.I have debated making a whole big masterclass about Claude code, where we use it to help build an entire application from scratch.So let me know if that's something you would like to see in the future.Anyway, thanks for watching, and I'm going to see you all in the next series.So then my friends, I really, really hope you enjoyed this series and you learned something along the way.If you did, please, please, please don't forget to share, subscribe and like.
+
+12
+00:04:43,200 --> 00:05:13,200
+That really means a lot.And if you want to access all of my YouTube courses without adverts, also get access to premium courses and early access courses as well, you can do at netninja.dev.You can sign up for Net Ninja Pro, which is just $9 a month and also half price for the first month with this promo code right here.And for that, like I said,Instead, you get access to every course without adverts, without YouTube adverts.You also get access to exclusive courses not found anywhere else.
+
+13
+00:05:13,440 --> 00:05:27,840
+You get access to my premium courses on Udemy and also early access to all of my YouTube courses as well.So the link to this page to sign up is going to be down below.Again, I really hope you enjoyed this series and I'm going to see you in the very next one.
+
+14
+00:05:38,480 --> 00:05:41,590
+.
+
+15
+00:05:50,960 --> 00:06:15,830
+..........
+

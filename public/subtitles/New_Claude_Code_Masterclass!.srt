@@ -1,0 +1,52 @@
+1
+00:00:00,320 --> 00:00:24,240
+All right then gang, it has been a while in the making, but it is finally here.The Claude Code Masterclass, available now over on netninja.dev.The course is $15 to buy, but if you use the promo code ClaudeNinja, all one word, you can grab it at half price for just $7.50.Anyway, I've spent the last six or seven weeks putting this together, trying to pack in as much genuinely useful, practical content as possible, and I've really enjoyed making it.
+
+2
+00:00:24,240 --> 00:00:45,800
+So whether you're completely new to Claude Code, you've been using it a little bit, but without any real structure or workflow, or even if you're slightly skeptical about AI tools in general, this course is built with you in mind.It's also not a vibe coding course.In my experience, AI is at its most powerful when it's paired with some coding experience and project knowledge, and that's the angle this course takes throughout.
+
+3
+00:00:46,720 --> 00:01:10,160
+Anyway, we start off with the fundamentals, and that means getting Claude Code installed and set up properly, going through some key settings and commands, and then dropping it into a real project to analyze an existing code base and start making changes.From there, we dig into how to manage context effectively, how Claude's tools work under the hood, and how permissions are handled, and how to create custom commands for the kinds of tasks that you're going to be doing all the time.
+
+4
+00:01:10,480 --> 00:01:39,920
+We also take a proper look at hooks, including building our own hook to automatically format code whenever Claude code edits a file, so it fits neatly into a real-world workflow.Once we've covered the basics, we'll move on to a spec-driven development workflow that I use all the time now in my own projects, and to do that, we'll be using a mixture of custombands, clawed codes, planning mode, and extended thinking with the Opus model to implement new features in a structured way.It's a simple three-step workflow that keeps me firmly in the loop.
+
+5
+00:01:39,920 --> 00:02:08,800
+It lets me review every code change and then jump into the weeds to make manual edits whenever I want.And honestly, I think that level of control is essential if you're going to be using AI as part of your development cycle.After that, we'll look at MCP servers and how they let Claude code interact with things outside of your codebase.In particular, we'll use the Figma MCP server to pull in design information and a Firebase server to communicate directly with a backend.Then we'll move on to skills.
+
+6
+00:02:09,160 --> 00:02:32,320
+which let us bake in more predictable patterns and outcomes by essentially teaching Claude how to do certain things in a specific preferred way.So that might be how schemas and data models are created or how database queries are structured, that kind of thing.On top of that, we'll do a proper deep dive into sub-agents and how they can improve your workflow using isolated context windows.and by running tasks in parallel.
+
+7
+00:02:32,560 --> 00:02:58,120
+We'll also be making three sub-agents of our own, which are gonna fit nicely into that spec-driven workflow that we set up in the course.And while we're learning all of this, we'll be building a project called PocketHeist, which is designed to add a little bit of mischief to the workplace.The idea is that coworkers can assign each other little heists around the office using secret code names.It's a full little project, but it also gives us a solid, realistic app to demonstrate the benefits of using Claude code as we build it out.
+
+8
+00:02:58,520 --> 00:03:17,040
+And once the core functionality and design of the application are all in place, we're going to bring GitHub into the workflow as well, and we'll use the Claude GitHub app to automatically review pull requests and have it work independently on open issues.After that, we'll deploy the app to VSL and set up automatic deployments whenever the production branch updates.
+
+9
+00:03:17,560 --> 00:03:41,200
+On top of all of that, we'll take a look at a slightly newer tool, the Claude code for the web tool, which lets us spin up tasks remotely in the cloud and open pull requests directly on GitHub without running anything locally.And again, we're gonna be doing all of this in a structured, refined way that fits nicely into a development workflow.Not vibe coding, not one-shotting the whole application, but instead using Claude code to make us 10 times more productive.
+
+10
+00:03:41,800 --> 00:04:03,280
+So whether you're completely new to Claude Code and Agentic Coding, or if you have some experience with it but haven't really figured out how to fit it nicely into your own workflow, or even if you're an AI skeptic, then this course is designed for you.It's packed full of tips, tricks, and things that I've learned over the last year since its release, and it's going to put you in a much better position to harness the power of AI in your own projects.
+
+11
+00:04:03,520 --> 00:04:19,079
+So again, use the promo code CLAUDENINJA to get the course for half price, just $7.50, but that code's only available for the next few weeks.After that, it's goingbe full price of $15, which is still less than most courses sell for to be honest.So I'll leave the link to this course down below the video.
+
+12
+00:04:19,360 --> 00:04:46,000
+Or if you want access to my entire library of masterclass courses and pro exclusive shorter courses not found anywhere else, you can sign up for a NetNinja membership and get instant access to all of them including this brand new Claude Code Masterclass as well.That's just $9 a month and you can even get your first month half price by using this promo code right here.So again, I'll leave a link to the pro membershippage below the video as well.Anyway, I really, really hope you enjoyed the course.
+
+13
+00:04:46,240 --> 00:04:49,040
+I've had loads of fun making it and I'm going to see you all in the next one.
+

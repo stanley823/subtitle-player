@@ -1,0 +1,79 @@
+[
+  {
+    "num": 1,
+    "short": "Intro & Setup",
+    "url": "https://www.youtube.com/watch?v=SUysp3sJHbA",
+    "primary": "Claude_Code_Tutorial_1_-_Introduction_and_Setup.srt",
+    "secondary": "Claude_Code_Tutorial_1_-_Introduction_and_Setup_zh-TW.srt"
+  },
+  {
+    "num": 2,
+    "short": "CLAUDE.md Files",
+    "url": "https://www.youtube.com/watch?v=i_OHQH4-M2Y",
+    "primary": "Claude_Code_Tutorial_2_-_CLAUDE.md_Files_and__init.srt",
+    "secondary": "Claude_Code_Tutorial_2_-_CLAUDE.md_Files_and__init_zh-TW.srt"
+  },
+  {
+    "num": 3,
+    "short": "Context",
+    "url": "https://www.youtube.com/watch?v=ob-mYGqqFQw",
+    "primary": "Claude_Code_Tutorial_3_-_Context.srt",
+    "secondary": "Claude_Code_Tutorial_3_-_Context_zh-TW.srt"
+  },
+  {
+    "num": 4,
+    "short": "Tools & Perms",
+    "url": "https://www.youtube.com/watch?v=TU0ZcDFq0e0",
+    "primary": "Claude_Code_Tutorial_4_-_Tools_and_Permissions.srt",
+    "secondary": "Claude_Code_Tutorial_4_-_Tools_and_Permissions_zh-TW.srt"
+  },
+  {
+    "num": 5,
+    "short": "Planning",
+    "url": "https://www.youtube.com/watch?v=MTGJuu9CeMk",
+    "primary": "Claude_Code_Tutorial_5_-_Planning_and_Thinking.srt",
+    "secondary": "Claude_Code_Tutorial_5_-_Planning_and_Thinking_zh-TW.srt"
+  },
+  {
+    "num": 6,
+    "short": "Slash Commands",
+    "url": "https://www.youtube.com/watch?v=52KBhQqqHuc",
+    "primary": "Claude_Code_Tutorial_6_-_Slash_Commands.srt",
+    "secondary": "Claude_Code_Tutorial_6_-_Slash_Commands_zh-TW.srt"
+  },
+  {
+    "num": 7,
+    "short": "MCP Servers",
+    "url": "https://www.youtube.com/watch?v=X7lgIa6guKg",
+    "primary": "Claude_Code_Tutorial_7_-_MCP_Servers.srt",
+    "secondary": "Claude_Code_Tutorial_7_-_MCP_Servers_zh-TW.srt"
+  },
+  {
+    "num": 8,
+    "short": "Subagents",
+    "url": "https://www.youtube.com/watch?v=Phr7vBx9yFQ",
+    "primary": "Claude_Code_Tutorial_8_-_Subagents.srt",
+    "secondary": "Claude_Code_Tutorial_8_-_Subagents_zh-TW.srt"
+  },
+  {
+    "num": 9,
+    "short": "With GitHub",
+    "url": "https://www.youtube.com/watch?v=7pKN_pjPW04",
+    "primary": "Claude_Code_Tutorial_9_-_Claude_Code_with_GitHub.srt",
+    "secondary": "Claude_Code_Tutorial_9_-_Claude_Code_with_GitHub_zh-TW.srt"
+  },
+  {
+    "num": 10,
+    "short": "Final Tips",
+    "url": "https://www.youtube.com/watch?v=cCHPjvswTpQ",
+    "primary": "Claude_Code_Tutorial_10_-_Final_Thoughts_and_Tips.srt",
+    "secondary": "Claude_Code_Tutorial_10_-_Final_Thoughts_and_Tips_zh-TW.srt"
+  },
+  {
+    "num": null,
+    "short": "Masterclass",
+    "url": "https://www.youtube.com/watch?v=Lr37J1ZUeZI",
+    "primary": "New_Claude_Code_Masterclass!.srt",
+    "secondary": "New_Claude_Code_Masterclass!_zh-TW.srt"
+  }
+]

@@ -1,0 +1,108 @@
+1
+00:00:01,440 --> 00:00:28,560
+Okay, so in this lesson, we're going to talk about two things that Claude Code can do, planning and thinking, which are both two very different things.Thinking is when you ask Claude Code to think about a solution before writing any code, and planning is when Claude puts together its own plan of action on how it intends to implement some features and asks you to approve it.So let's start with planning, and you might have caught a glimpse of this at the end of the last lesson where we used Alt+M to cycle through the auto-edit option down here.
+
+2
+00:00:29,040 --> 00:00:57,560
+So if I press Alt M once, I turn on the accept edits feature, but if I press it twice, we go into the planning mode instead.Now, planning mode is good for when you're giving Claude Code a task which has a wide breadth of changes over several different files, but where individually each of those changes might not necessarily be complex.They could be, but maybe not.Still, the scope of those changes might be quite wide and with a plan, it makes easier for Claude Code to stay on track and complete each task in order.
+
+3
+00:00:58,800 --> 00:01:14,480
+Let's keep planning mode on and we're going to ask it to do the following.Can you make a custom component for an avatar?No pick, only initial and find any places in the project where it can replace avatar like templates.So I'm going to press enter now and see what it comes up with.
+
+4
+00:01:16,080 --> 00:01:23,760
+So first of all, it's analysing the codebase to understand where an avatar component could be useful.So it's searching things, it's reading different files.
+
+5
+00:01:27,520 --> 00:01:53,440
+All right, and now it's come up with a plan right here.So if we scroll to the top, you can see it's discovered avatar-like implementations in the blog system in a few different places, in the blog post cards, and also in recent activity in the sidebar.So it's detected those, and then it's proposing this avatar component.So it's in the correct place inside the UI folder, then an avatar folder, then avatar.tsx.So it's going to have
+
+6
+00:01:54,000 --> 00:02:21,120
+the initial based avatar, which is going to be the first letter from their name, multiple sizes, color variants, consistent styling.So it's kind of following the same pattern as the button component, which is nice.So for the implementation plan, it's going to first of all create the avatar component, then replace the existing avatar code in the blog post cards, and it even specifies exactly where it's going to do that for us.Then it says it's going to work on the blog sidebar,
+
+7
+00:02:21,720 --> 00:02:49,360
+and it's gonna add the avatar to individual blog posts as well inside the blog post details page.Then it's gonna create a test file to follow the existing button test patterns, so it can be tested on the avatar component as well.And then we're gonna add a link to the avatar preview in the header navigation.So you can go ahead and accept this plan, or you can accept the plan, but then keep manually approving any edits.
+
+8
+00:02:49,760 --> 00:03:00,080
+Or you can say no and keep planning and provide feedback for the plan so it adjusts the plan.So I'm going to select the first option up here, which is yes and auto accept edits.
+
+9
+00:03:11,440 --> 00:03:29,360
+Okay, so down here it is saying it wants to run this bash command, npm run test.And I want to select the second option, which is yes, and don't ask me again for NPM run test commands.And when I do that, it should automatically go into the settings.local file right here, which we can see it does awesome.
+
+10
+00:03:39,280 --> 00:03:44,160
+All right, so this time it's trying to link the file.And again, I'm going to choose the second option down here.
+
+11
+00:03:52,960 --> 00:04:13,840
+Okay, then finally, it looks like it's done.So it's checked off everything from the plan it created.All the tests are passing.And if we close this off and take a look over here, we should be able to see that new avatar folder.And okay, so it's actually created a full page for the avatar.Now,Maybe that was in the plan and I didn't fully understand it.
+
+12
+00:04:13,840 --> 00:04:41,360
+I thought it was just going to add it to the preview page, but you see this is where sometimes AI can go wrong, Claude Code, Copilot, whatever you're using, so it's important to keep it on track.Either way, it doesn't so much matter for this particular task.It's just to preview it after all, and I can delete this page afterwards.But you can see we've got this component folder down here, avatar.We've got the test file and the avatar component itself.So we've got the default size right here set to medium.
+
+13
+00:04:41,520 --> 00:05:09,600
+The variant is gradient, but we have these different variant options up here and different sizes as well for the props.We have the size classes, the variant classes, and then down here we have the avatar itself.Okay, so let's see if this works in the browser.All right, so you can see added the avatar page and the link to the header, so it did get a little bit trigger happy.And now if we take a look down here, we can see all the different variants that we have, the different sizes, even use cases down here.
+
+14
+00:05:09,600 --> 00:05:34,400
+So I think this is all really, really nice.It's created that component and shown us different ways we can use it.Now, if I go to the actual blog part of the website, you can see it's now using that avatar here, it's using it down here asinside recent activity, and if I was to select an individual blog like this one right here, you can see we have the avatar on the blog details as well.
+
+15
+00:05:34,400 --> 00:05:56,960
+So the only thing it did really that I didn't want it to do was place the avatar link up here and create a full page for the avatars when I...specified in a claw.nd file that they should go inside the preview file.So maybe I wasn't specific enough, maybe I looked over the plan too quickly, I don't know.But this is easy to rectify, I can just delete these pages, no problem.
+
+16
+00:05:57,280 --> 00:06:27,160
+So I just told Claude Code to remove the avatar page and instead put all of the samples inside the preview page and it's going ahead and done that, which is good.I've also updated the Claude MD file with this more specific instruction at the bottom, which says now when making new page components, always add a link to that page in the header.So it did this for our UI component.So I added this bit on only do this for page components, not UI or other dropping components.So I guess this is a lesson in instructions.
+
+17
+00:06:27,680 --> 00:06:57,320
+and also in how you have to be specific in what you want Claude code to do.Okay, so that'll work pretty well.And I think having plan mode turned on probably helped Claude code complete the task correctly.Now it may still have done so without planning mode on, but when it is turned on, I find it's worth to stay on track more for tasks with a wider scope.And arguably the scope wasn't huge for this task, but it still involved making a component, testing the component, looking for places it can be used, editing those files,
+
+18
+00:06:57,480 --> 00:07:27,320
+etc.Anyway, now let's look at thinking mode.Now think mode is good when you want Claude code to work on something that includes more complex logic.So not necessarily a wide scope like planning mode is for.It could be quite a narrow scope, but one where the logic is more complex.For example, I might want to implement a comment system for the blog where users can comment on the blogs and that would include perhaps some thoughts about exactly how it should be done, what auth services, if any, should be used.
+
+19
+00:07:27,400 --> 00:07:57,320
+What React components need to be made?What additional pages might need to be made?What about live updates?And how does this get structured and fit well together in this application?So for something like this, you would turn on extended thinking mode, which does consume more tokens, but it allows the model to reason and think more about how to complete something in a way that actually works.Now, to be honest, we're entering into the realms of vibe coding when we ask the AI to implement a whole system like this, and I would personally break this
+
+20
+00:07:57,440 --> 00:08:27,120
+down into smaller chunks or tasks and work on each one, one at a time with Claude code so I could more easily guide the AI to do what I want it to do.But for the sake of this lesson and to demonstrate thinking mode, we'll run with this example.So let me paste in this prompt right here, first of all, which says, implement a comment system into the application where users can authenticate and then comment on blog posts.Think hard about this implementation, including the database schema or
+
+21
+00:08:27,400 --> 00:08:51,520
+authentication services, moderation and real-time updates.I'm also going to keep planning mode on so I can see the plan that Claude Code makes as well.Now I'm triggering think mode in this prompt by using the word think right here.And whenever Claude Code sees that in your prompt, that word, it's going to use extended thinking mode.So then let me press enter now and we'll see what Claude Code does.
+
+22
+00:08:54,920 --> 00:09:08,000
+All right, so already in this kind of gray color, you can see it's thinking and this is the thinking process that it has kind of behind the scenes.So by using that think keyword in our prompt, we've enabled this thinking mode.
+
+23
+00:09:12,880 --> 00:09:41,920
+All right, and now it's come up with a plan.So that took a little bit longer, but it's because Claude code was thinking.So this is the plan and it's quite extensive, there's a lot of steps involved.All right, and anything in a kind of faded gray up here, this is all of Claude's thinking, and it also prefixes that, if you like, with this little thinking text right here, so every time it's thinking about something, you'll see that.All right, thinking, thinking.So it thinks quite a lot.
+
+24
+00:09:41,920 --> 00:10:10,040
+So then I'm not going to go ahead with these changes because that would drastically change my project right now.And I'd also have to set up some external services as well.And again, because I wouldn't normally let AI completely loose on tasks like this, I don't know which direction it's going to go off in.Instead, I would break it down into logical steps, maybe taking each of these checkpoints in the plan and working on them individually.That way I can stay in a loop, check the code in small steps manually, and make changes myself where I
+
+25
+00:10:10,120 --> 00:10:38,000
+I need to along the way.Doing everything I want sometimes makes things harder in the long run.I find that pretty soon you're out of the loop and you get sucked into this full-on vibe coding experience where you're just asking Claw to fix everything and ignoring the code completely.I'm going to choose not to do this now, but just very quickly before we finish this video, I want to mention that Clawed code does have different levels of thinking that you can activate.In the example I just used, I said think hard.
+
+26
+00:10:38,320 --> 00:11:05,240
+But you can also just say think, and that's going to trigger a smaller amount of thinking and reasoning.Likewise, you can go the other way by saying think harder, and that's going to crank the thinking up even more.And if you want to go all in, then you can ask Claude to ultra think, which activates the hardest thinking mode it has.But again, remember that thinking consumes more tokens, and the harder you ask Claude code to think, the more tokens it's going to use up.All right then.
+
+27
+00:11:05,320 --> 00:11:09,360
+now we know a little bit about planning and thinking, next up we'll talk about commands.
+
