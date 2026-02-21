@@ -33,9 +33,34 @@ function tcToSec(tc) {
   return h * 3600 + min * 60 + s + parseInt(ms.padEnd(3, '0')) / 1000;
 }
 
+const MAX_CHARS = 100;
+
 /**
- * Splits long subtitle entries at sentence boundaries and redistributes
- * their time range proportionally by character count.
+ * Recursively splits a single string at the word/CJK-punctuation boundary
+ * nearest to its midpoint until every chunk is within MAX_CHARS.
+ */
+function splitLong(text) {
+  if (text.length <= MAX_CHARS) return [text];
+
+  const mid = Math.floor(text.length / 2);
+  // Search outward from midpoint for a natural break (space or CJK punctuation)
+  for (let d = 0; d <= mid; d++) {
+    for (const pos of [mid - d, mid + d]) {
+      if (pos <= 0 || pos >= text.length) continue;
+      if (/[\s，、；。！？]/.test(text[pos])) {
+        const left  = text.slice(0, pos + 1).trim();
+        const right = text.slice(pos + 1).trim();
+        if (left && right) return [...splitLong(left), ...splitLong(right)];
+      }
+    }
+  }
+  return [text]; // no break found, keep as-is
+}
+
+/**
+ * Splits long subtitle entries at sentence boundaries then further at
+ * word boundaries so no chunk exceeds MAX_CHARS. Time is redistributed
+ * proportionally by character count.
  * @param {{ start: number, end: number, text: string }[]} entries
  * @returns {{ start: number, end: number, text: string }[]}
  */
@@ -52,15 +77,17 @@ export function expandEntries(entries) {
       .map(s => s.trim())
       .filter(Boolean);
 
-    if (sentences.length <= 1) {
+    const chunks = sentences.flatMap(splitLong);
+
+    if (chunks.length <= 1) {
       result.push({ start, end, text });
       continue;
     }
 
-    const totalChars = sentences.reduce((n, s) => n + s.length, 0);
+    const totalChars = chunks.reduce((n, s) => n + s.length, 0);
     let t = start;
 
-    for (const s of sentences) {
+    for (const s of chunks) {
       const dur = duration * (s.length / totalChars);
       result.push({ start: t, end: t + dur, text: s });
       t += dur;
