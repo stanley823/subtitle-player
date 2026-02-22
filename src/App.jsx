@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import SetupForm from './components/SetupForm';
 import VideoPlayer from './components/VideoPlayer';
 import PlaylistPanel from './components/PlaylistPanel';
@@ -27,6 +27,14 @@ function readFile(file) {
     r.readAsText(file, 'UTF-8');
   });
 }
+
+// ─── Last playlist item persistence ──────────────────────────────────────────
+const LAST_ITEM_KEY = 'subtitle-player-last-item';
+const saveLastItem  = (item) => { try { localStorage.setItem(LAST_ITEM_KEY, JSON.stringify(item)); } catch {} };
+const clearLastItem = ()     => { try { localStorage.removeItem(LAST_ITEM_KEY); } catch {} };
+const loadLastItem  = ()     => { try { const r = localStorage.getItem(LAST_ITEM_KEY); return r ? JSON.parse(r) : null; } catch { return null; } };
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 function buildSession(videoId, primaryContent, secondaryContent) {
   const rawPrimary = parseSRT(primaryContent);
@@ -58,6 +66,7 @@ export default function App() {
       const primaryContent   = await readFile(primaryFile);
       const secondaryContent = secondaryFile ? await readFile(secondaryFile) : null;
       setSession(buildSession(videoId, primaryContent, secondaryContent));
+      clearLastItem(); // manual load takes priority — clear saved playlist item
     } catch (e) {
       setError('載入失敗：' + e.message);
     }
@@ -75,12 +84,19 @@ export default function App() {
       ]);
       if (!primaryContent) throw new Error('找不到主要字幕檔案');
       setSession(buildSession(videoId, primaryContent, secondaryContent));
+      saveLastItem(item); // persist for next session
     } catch (e) {
       setError('載入失敗：' + e.message);
     } finally {
       setLoading(false);
     }
   }, []);
+
+  // Auto-restore last playlist item on mount
+  useEffect(() => {
+    const item = loadLastItem();
+    if (item) handleLoadFromPlaylist(item);
+  }, [handleLoadFromPlaylist]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-[#e0e0e0] font-sans">
