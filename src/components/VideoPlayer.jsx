@@ -1,8 +1,9 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import YouTube from 'react-youtube';
 import SubtitleOverlay from './SubtitleOverlay';
-import SettingsModal, { defaultSubtitleStyles, defaultVideoSettings } from './SettingsModal';
+import SettingsModal from './SettingsModal';
 import { useSubtitleSync } from '../hooks/useSubtitleSync';
+import { usePreferences } from '../hooks/usePreferences';
 
 function fmtTime(sec) {
   const h = Math.floor(sec / 3600);
@@ -23,16 +24,29 @@ const MODE_BUTTONS = [
 ];
 
 export default function VideoPlayer({ videoId, primarySubs, secondarySubs, stats }) {
-  const playerRef = useRef(null);
-  const [embedError,    setEmbedError]    = useState(null);
-  const [settingsOpen,  setSettingsOpen]  = useState(false);
-  const [subtitleStyles, setSubtitleStyles] = useState(defaultSubtitleStyles);
-  const [videoSettings,  setVideoSettings]  = useState(defaultVideoSettings);
-  const [subtitleMode,   setSubtitleMode]   = useState('both');
+  const playerRef     = useRef(null);
+  const lastSaved     = useRef(0);
+  const [embedError,   setEmbedError]  = useState(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  const {
+    videoSettings,  setVideoSettings,
+    subtitleStyles, setSubtitleStyles,
+    subtitleMode,   setSubtitleMode,
+    saveProgress,   getProgress,
+  } = usePreferences();
 
   const { primary, secondary, currentTime } = useSubtitleSync(
     playerRef, primarySubs, secondarySubs
   );
+
+  // Save playback progress every 5 s of elapsed time
+  useEffect(() => {
+    if (currentTime > 0 && currentTime - lastSaved.current >= 5) {
+      saveProgress(videoId, currentTime);
+      lastSaved.current = currentTime;
+    }
+  }, [currentTime, videoId, saveProgress]);
 
   const visiblePrimary   = (subtitleMode === 'primary'   || subtitleMode === 'both') ? primary   : null;
   const visibleSecondary = (subtitleMode === 'secondary' || subtitleMode === 'both') ? secondary : null;
@@ -45,7 +59,12 @@ export default function VideoPlayer({ videoId, primarySubs, secondarySubs, stats
     paddingBottom: `${RATIO_PAD[videoSettings.aspectRatio] ?? 56.25}%`,
   };
 
-  const onReady = useCallback((e) => { playerRef.current = e.target; setEmbedError(null); }, []);
+  const onReady = useCallback((e) => {
+    playerRef.current = e.target;
+    setEmbedError(null);
+    const saved = getProgress(videoId);
+    if (saved > 10) e.target.seekTo(saved, true);
+  }, [videoId, getProgress]);
 
   const onError = useCallback((e) => {
     if (e.data === 101 || e.data === 150) setEmbedError('此影片的擁有者不允許在外部網站播放。');
