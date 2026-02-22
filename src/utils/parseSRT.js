@@ -41,6 +41,8 @@ const MAX_CHARS = 100;
  */
 function splitLong(text) {
   if (text.length <= MAX_CHARS) return [text];
+  // Sentences ending with punctuation form a complete thought — keep whole
+  if (/[.!?。！？]$/.test(text.trim())) return [text];
 
   const mid = Math.floor(text.length / 2);
   // Search outward from midpoint for a natural break (space or CJK punctuation)
@@ -57,6 +59,44 @@ function splitLong(text) {
   return [text]; // no break found, keep as-is
 }
 
+// ─── Shared helpers ───────────────────────────────────────────────────────────
+
+/** Split one text block into sentence-level chunks via splitLong. */
+function toChunks(text) {
+  const spaced = text.replace(/([.!?])([A-Z])/g, '$1 $2');
+  const sentences = spaced
+    .split(/(?<=[.!?])\s+|(?<=[。！？])/)
+    .map(s => s.trim())
+    .filter(Boolean);
+  const chunks = sentences.flatMap(splitLong);
+  return chunks.length > 0 ? chunks : [text];
+}
+
+/**
+ * Compute cumulative character-ratio boundaries for an array of chunks.
+ * Returns length chunks.length + 1, spanning [0, 1].
+ */
+function toRatios(chunks) {
+  const total = chunks.reduce((n, s) => n + s.length, 0) || 1;
+  const ratios = [0];
+  let acc = 0;
+  for (const chunk of chunks) {
+    acc += chunk.length;
+    ratios.push(acc / total);
+  }
+  return ratios;
+}
+
+/** Return the chunk whose ratio interval contains r. */
+function chunkAt(chunks, ratios, r) {
+  for (let i = 0; i < chunks.length; i++) {
+    if (r >= ratios[i] && r < ratios[i + 1]) return chunks[i];
+  }
+  return chunks[chunks.length - 1] ?? '';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
  * Splits long subtitle entries at sentence boundaries then further at
  * word boundaries so no chunk exceeds MAX_CHARS. Time is redistributed
@@ -69,32 +109,97 @@ export function expandEntries(entries) {
 
   for (const { start, end, text } of entries) {
     const duration = end - start;
-
-    // Ensure space after sentence-ending punctuation before a capital letter
-    const spaced = text.replace(/([.!?])([A-Z])/g, '$1 $2');
-    const sentences = spaced
-      .split(/(?<=[.!?])\s+/)
-      .map(s => s.trim())
-      .filter(Boolean);
-
-    const chunks = sentences.flatMap(splitLong);
+    const chunks   = toChunks(text);
 
     if (chunks.length <= 1) {
       result.push({ start, end, text });
       continue;
     }
 
-    const totalChars = chunks.reduce((n, s) => n + s.length, 0);
-    let t = start;
-
-    for (const s of chunks) {
-      const dur = duration * (s.length / totalChars);
-      result.push({ start: t, end: t + dur, text: s });
-      t += dur;
+    const ratios = toRatios(chunks);
+    for (let i = 0; i < chunks.length; i++) {
+      result.push({
+        start: start + ratios[i]     * duration,
+        end:   start + ratios[i + 1] * duration,
+        text:  chunks[i],
+      });
     }
   }
 
   return result;
+}
+
+/**
+ * Aligns primary and secondary subtitle entries by merging their split-point
+ * ratios within each shared block, so both tracks always occupy the same
+ * time slots and can be read side-by-side.
+ *
+ * @param {{ start: number, end: number, text: string }[]} primaryEntries
+ * @param {{ start: number, end: number, text: string }[]} secondaryEntries
+ * @returns {{ primarySubs: object[], secondarySubs: object[] }}
+ */
+export function alignEntries(primaryEntries, secondaryEntries) {
+  const primarySubs   = [];
+  const secondarySubs = [];
+  const len = Math.min(primaryEntries.length, secondaryEntries.length);
+
+  for (let i = 0; i < len; i++) {
+    const pe = primaryEntries[i];
+    const se = secondaryEntries[i];
+    const { start, end } = pe;
+    const duration = end - start;
+
+    const pChunks = toChunks(pe.text);
+    const sChunks = toChunks(se.text);
+    const pRatios = toRatios(pChunks);
+    const sRatios = toRatios(sChunks);
+
+    // Use the denser track as the master timeline so both tracks always
+    // switch at the same moment — the sparser track simply holds its text
+    // across consecutive slots rather than jumping at a different time.
+    const [mainChunks, mainRatios, otherChunks, otherRatios, primaryIsMain] =
+      pChunks.length >= sChunks.length
+        ? [pChunks, pRatios, sChunks, sRatios, true]
+        : [sChunks, sRatios, pChunks, pRatios, false];
+
+    for (let j = 0; j < mainChunks.length; j++) {
+      const rMid      = (mainRatios[j] + mainRatios[j + 1]) / 2;
+      const slotStart = start + mainRatios[j]     * duration;
+      const slotEnd   = start + mainRatios[j + 1] * duration;
+      const mainText  = mainChunks[j];
+      const otherText = chunkAt(otherChunks, otherRatios, rMid);
+
+      primarySubs.push({
+        start: slotStart, end: slotEnd,
+        text:  primaryIsMain ? mainText : otherText,
+      });
+      secondarySubs.push({
+        start: slotStart, end: slotEnd,
+        text:  primaryIsMain ? otherText : mainText,
+      });
+    }
+  }
+
+  // Primary blocks beyond secondary coverage — fall back to expandEntries
+  for (let i = len; i < primaryEntries.length; i++) {
+    const { start, end, text } = primaryEntries[i];
+    const duration = end - start;
+    const chunks   = toChunks(text);
+    if (chunks.length <= 1) {
+      primarySubs.push({ start, end, text });
+      continue;
+    }
+    const ratios = toRatios(chunks);
+    for (let j = 0; j < chunks.length; j++) {
+      primarySubs.push({
+        start: start + ratios[j]     * duration,
+        end:   start + ratios[j + 1] * duration,
+        text:  chunks[j],
+      });
+    }
+  }
+
+  return { primarySubs, secondarySubs };
 }
 
 /**

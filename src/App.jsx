@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import SetupForm from './components/SetupForm';
 import VideoPlayer from './components/VideoPlayer';
 import PlaylistPanel from './components/PlaylistPanel';
-import { parseSRT, expandEntries } from './utils/parseSRT';
+import { parseSRT, expandEntries, alignEntries } from './utils/parseSRT';
 import { fetchSrt } from './data/playlist';
 
 function extractVideoId(url) {
@@ -30,15 +30,17 @@ function readFile(file) {
 
 function buildSession(videoId, primaryContent, secondaryContent) {
   const rawPrimary = parseSRT(primaryContent);
-  const primarySubs = expandEntries(rawPrimary);
-  let secondarySubs = [];
+
   if (secondaryContent) {
-    secondarySubs = expandEntries(parseSRT(secondaryContent));
+    const rawSecondary = parseSRT(secondaryContent);
+    const { primarySubs, secondarySubs } = alignEntries(rawPrimary, rawSecondary);
+    const stats = `主字幕：${primarySubs.length} 句｜第二字幕：${secondarySubs.length} 句（對齊）`;
+    return { videoId, primarySubs, secondarySubs, stats };
   }
-  const stats =
-    `主字幕：${rawPrimary.length} 段 → ${primarySubs.length} 句` +
-    (secondarySubs.length ? `｜第二字幕：${secondarySubs.length} 句` : '');
-  return { videoId, primarySubs, secondarySubs, stats };
+
+  const primarySubs = expandEntries(rawPrimary);
+  const stats = `主字幕：${rawPrimary.length} 段 → ${primarySubs.length} 句`;
+  return { videoId, primarySubs, secondarySubs: [], stats };
 }
 
 export default function App() {
