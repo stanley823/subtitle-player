@@ -1,0 +1,108 @@
+1
+00:00:00,480 --> 00:00:28,880
+All right, so now we've got a plan document for the authentication forms, and that plan contains all the information, instructions, code examples, and steps needed to implement it.So the next step then is to ask Claude Code to do just that.Now, before we do, I want to talk about two things, starting with model selection.So far, we've been using the Sonic model, right, to make small code changes, create a spec, and also plan the feature, because I think plan mode uses Sonic 4.5 by default as well.
+
+2
+00:00:29,280 --> 00:00:57,040
+However, when it comes to implementing the plan, I often switch the model to Opus 4.5, or whatever the leading Opus model might be at the time that you're watching this.And that's because the Opus models, especially 4.5 in my experience, are really good at following a set of instructions, like outlined in the plan, and they rarely deviate.So depending on the nature of the feature that I'm working on, I will sometimes choose to work with the Opus model at this point, just by typing the model command.
+
+3
+00:00:57,640 --> 00:01:20,080
+and then selecting the Opus 4.5 model.Now for simple features, arguably like this one that we're about to implement, I might stick to Sonnet, but for more in-depth or multi-step or complex features, I would more than likely switch.All right, so next, I want to mention something called extended thinking in Claude Code, which is when the model spends more time reasoning about the task.
+
+4
+00:01:20,320 --> 00:01:47,080
+Again, this mode is better suited to more complex multi-step problems because it allows the model extra room to explore possible solutions, correct itself, and so on.It does consume more tokens because of that internal reasoning, but it pays dividends when the implementation isn't necessarily straightforward.It also means that if it sees any holes in the plant, it will find an alternative solution.Now, Thinking Mode is actually enabled by default, I think.
+
+5
+00:01:47,080 --> 00:01:59,520
+And to be honest, unless I'm working on trivial changes, I keep it on most of the time.But you can toggle it on and off by using the Config command and then finding a setting called Thinking Mode.
+
+6
+00:02:00,160 --> 00:02:26,720
+So, you can see that I've currently got it turned on, which means for all the prompts I currently send, the model will do extra reasoning, producing hopefully better results, but you can toggle it off here by hitting space or enter, and that setting is going to be saved to your global user settings for all projects.Now I'm going to keep mine switched on, but do be wary when using Thinking Mode with Opus 4.5 especially, because it can eat through your token limits a little bit more quickly.
+
+7
+00:02:26,800 --> 00:02:55,600
+On a Mac, I can also toggle Thinking Mode on and off quickly by pressing Option + T, which brings the option to turn it on or off.On Windows, I think you'll need to press Alt + T instead.Also, if you have Thinking Mode turned off by default, you can trigger extended thinking in a single exchange or prompt by typing the word UltraThink into your messages.I could type out my regular prompt and then tell it to UltraThink about it at the end, and that would trigger thinking mode for that prompt.
+
+8
+00:02:56,000 --> 00:03:16,080
+Anyway, I'm going to keep thinking mode on for this, and I've also switched to OPUS 4.5, which might be overkill for this feature, but I wanted to show you my typical workflow.And now I'm going to make sure the plan document is open to supply it automatically as context to cloud code, and then I'll type, Can you implement this plan?
+
+9
+00:03:17,400 --> 00:03:42,560
+And then just hit enter.So when I do that, the model is going to look through the plan, a reason about how best to implement it, and then go ahead and start making code changes.Now, normally as well, I also put auto edit mode on.So let's do that.And to speed this process up, I'm going to just fast forward the video, grant any permissions it might need, and then I'll come back at the end when it's done so we can walk through the results together.
+
+10
+00:03:50,640 --> 00:04:18,880
+All right, so that took two and a half minutes to complete for all of those components created.And if we take a look at all this, you can see it's created all these new components.It's updated these pages.It's created all the new test files.They all pass now.There was some kind of error up here.I think it was a linting error, so it did that and then it went ahead and fixed it as well.So it does iterate on problems when it comes across them.So let's now have a look at the new files it's added.
+
+11
+00:04:19,279 --> 00:04:47,000
+Just very briefly, and again, I'm not going to spend a long time on this for the sake of this tutorial, because I really don't think you want to watch me just going through files.But I would normally spend a good half an hour or so, maybe longer, going through the different files it's created, making sure everything looks correct to me,Making sure I understand everything, because I would hate for a project to spiral into a direction where I don't really know what's going on, so I'm going to quickly have a little look at these components.
+
+12
+00:04:47,000 --> 00:05:11,920
+We've got a button component, first of all, here with three different files, so it looks pretty simple.We've got some props right here and a prop interface, so...The type is either submit, reset, or button.Then we have the children, which is whatever text I guess we pass into the button, an on click handler that is passed forward, and a disabled prop as well.So this is all quite simple.
+
+13
+00:05:11,920 --> 00:05:41,200
+And then we've got a class name here of BTM, which is one we already created, plus the styles for this particular button as well.All right, cool.So that's the button, very simple.The input component is here.Again, we've got some props.typed up here.Again, very simple.And we start it up here using the input group.So let's have a look at this.Yep, that is the input group class there inside the module.And then down here we have the label for the inputs, which we can pass in.
+
+14
+00:05:41,880 --> 00:05:47,840
+And also the input itself with the on change handler, the class.Okay, yeah, all looks pretty good.
+
+15
+00:05:49,120 --> 00:06:18,160
+The login form itself.All right, so yeah, standard react components andAnd then down here we're using a bit of state for the e-mail and password.We have a submit handler.We prevent the default action.And then we log the e-mail and password to the console.Then we're using those input components and the password input, which we've not seen yet.And then the button component at the bottom.We also have that link to the signup page.Good.And let's have a look at the signup form first of all, before we look at the password input.
+
+16
+00:06:19,280 --> 00:06:43,120
+So this looks pretty similar.We're using state again.We've got the submit handler, does a similar thing.Yeah, they all look pretty similar, except this one now goes to the login page at the bottom.All right.And then we also have the password input component right here.And we're taking all these props, same as the other inputs, but this time we have this bit of state, visible and set visible.
+
+17
+00:06:44,400 --> 00:06:50,640
+So we should have an icon here somewhere, shouldn't we?There it is.So we have the eye off and also the eye.
+
+18
+00:06:51,960 --> 00:07:20,400
+When we click on one of these, which is actually a button, it's embedded inside a button, when we click on that, it's toggling the visibility, this bit of state.So it's either going to show one or the other.And when we have, there's the input, so when we have visible set to true, then it is going to show the text inside it.It's going to become a text input basically.Now whenthe visible is false, it's gonna become a password import and therefore hide it.
+
+19
+00:07:20,560 --> 00:07:45,320
+Okay, yeah, that all makes sense to me.All right, so what else have we got?We've got the test down here, which I don't think we really need to take a look at.It's created test files for each of these.Again, I would go through these if I wasn't recording a video.And then up here inside the app folder, we should have those components added to the login page, which we do, the login form right here, and also the signup page right here.
+
+20
+00:07:46,000 --> 00:08:14,080
+All right, awesome, so it all looks good to me, and what I would do now is just preview this in a browser.All right then, so here we are on the login page, and that all looks pretty good to me, so I could type something in here like mario@, I don't know, pocketheist.com, and down here we've got the password, test1234.If I click on this icon, this eye icon, then we can see it, and yeah, that's all working, pretty nice.
+
+21
+00:08:14,600 --> 00:08:43,880
+We can switch to the sign up page over here, which again looks okay to me.So let's just make sure this works as well.So mario@ph.com and then create a password, test1234.So by default it doesn't show.If we click on the eye icon, then it does show and vice versa.Awesome.Okay then, so that's all looking good to me.All right then, so because I'm happy with this at this moment, I would probably now go ahead and addadd all these changes to staging.So let me do that over here.
+
+22
+00:08:43,880 --> 00:09:12,800
+I'll just say git add.And then I'm going to go ahead and use the commit message command to make a commit.So let's do that.Commit hyphen message down here and press enter.And then that's going to commit that to this branch right here, which remember we're working on, which is Claude forward slash feature forward slash authentication forms.So it's made the message for us.I will say yes, I want you to commit with that message.So then my friends, we've now completed a full cycle of this workflow.
+
+23
+00:09:12,800 --> 00:09:41,320
+We have made a high level feature spec using the spec command.Then we made a detailed technical plan about how to implement that feature.And finally, we used that plan to add the feature with Open 4.5 and extended thinking.Now, like I said earlier, you can add more steps to this workflow to include maybe design references, code reviews, et cetera.And we will be doing some of that later on.But even without those, I think this is a solid, simple three-step process.You cancould use to start adding features to the application.
+
+24
+00:09:42,000 --> 00:10:08,760
+Now, at this point, I would normally push this feature branch to GitHub so it could be reviewed and then merged into the main branch.But I don't want to introduce GitHub to the workflow just yet because there's going to be a whole chapter about that later on.So for now, because I'm fully happy with this feature implementation, I'll just merge this branch locally by coming to the chat window and entering bash mode.Then I'm going to switch to the main branch by typing git switch main and hitting enter.
+
+25
+00:10:09,440 --> 00:10:34,080
+Once we're on the main branch, we can enter bash mode again and then merge the feature branch by tapping git, merge, and then whatever the branch name is that we want to merge into main.And once we've done that, we can just hit enter to run the command and merge the feature branch into the main one so it contains that new feature that we just added.Alright my friends, so that is the end of this free chapter.I really, really hope you gained something from it.
+
+26
+00:10:34,360 --> 00:11:00,720
+And like I said before, this was just a tiny part of the full Claude Code masterclass that I recently released on netninja.dev.So if you enjoyed this and you want to learn much more about the process and extend the process,and also learn about other topics like MCP servers, sub-agents, and the newer Claude Code web tool, then definitely check this course out.It's only $15, and if you use the promo code ClaudeNinja, you can get the course for half price, but that code is going to expire in a few weeks.
+
+27
+00:11:01,040 --> 00:11:21,520
+Also, if you want access to my entire course library, including this Claude Code masterclass, plus nine other masterclass courses, as well as other exclusive tutorials, you can sign up for a NetNinja Pro subscription.It's just $9 a month, and you can get your first month half price using thispromo code right here.Anyway, I really hope you enjoyed this chapter and I'm going to see you all in the next series.
+

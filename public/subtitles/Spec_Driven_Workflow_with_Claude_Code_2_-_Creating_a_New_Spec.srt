@@ -1,0 +1,48 @@
+1
+00:00:02,160 --> 00:00:22,000
+Now we've got a spec command in place, let's use it to spec out a new feature for this project.The feature I want to spec to begin with is the authentication forms, because currently the signup and login pages are pretty empty.If we take a quick look at those, which are both inside the public group, you're going to see that the only template inside them is currently a title for the page.
+
+2
+00:00:22,160 --> 00:00:47,360
+So what I'd like to do is make a spec for adding a form to each page, login and signup, and a link to switch between each one as well.I also don't want to implement any actual authentication logic at this stage and only focus on the front end for now.So then let's come to the chat and use the spec command first of all.And remember, in order to see this command after you make it, you'll need to exit your Cloud Code session, then resume it again to pick it up, which is what I've already done.
+
+3
+00:00:47,520 --> 00:01:12,400
+Anyway, after the spec command, I'm just going to paste in this single prompt which says.Let's spec the authentication forms on the login and signup pages.They need e-mail and password fields, a hide password icon, and a submit button (signup login).The forms should only log details to the console for now when they are submitted.We should be able to easily switch between the two forms.
+
+4
+00:01:12,880 --> 00:01:31,200
+Now we could also manually add the login and sign up pages as context using the at symbol if we wanted to.But for this project we probably don't need to because it's quite small and currently there's not many pages to look through to find them.All right then, so let's press enter and see what happens.I'm going to also toggle on auto accept.
+
+5
+00:01:33,240 --> 00:02:00,800
+And it's checking the branch first of all to make sure we have nothing to commit.And now it's come up with the feature title, authentication forms, the feature slug right here with a dash, and then the branch name, which is how we specified it.Claude first, then feature, then the name of the feature using the feature slug.All right, cool.So now it's switched to the branch as well using this bash command.And then it's going to go ahead and create this file, which it's done.
+
+6
+00:02:01,400 --> 00:02:22,680
+And if we take a look over here inside the specs folder, we can see that new file.Awesome.All right, so let's just have a quick look at the spec file it's generated then.So we have the title at the top, then the branch name, then we have a quick summary, which is basically what we wrote as a prompt.It's reworded it.And then down here we have some functional requirements.
+
+7
+00:02:22,680 --> 00:02:51,520
+So e-mail input field with appropriate type and validation attributes, password input field with toggle visibility functionality, hide show password icon, submit button labeled login on the login page, sign up on the sign up page, submission handlers, logs to the console, blah, blah, blah, accessible form labels.And then, if we scroll down, I'm doing this very quickly, by the way, because I'm quite aware you don't want to watch me just reading this out, but definitely read through this yourself.I would spend 5 or 10 minutes just going through this.
+
+8
+00:02:52,160 --> 00:03:17,360
+Possible edge cases, so when a user submits the form with an empty e-mail field, okay, or empty password or invalid e-mail.A user rapidly toggles the password visibility, blah, blah, blah, accepts its criteria down here.So these are things that kind of have to pass, I guess, for it to be acceptable.So e-mail and password fields render correctly.The password visibility toggle icon changes state and reveals or hides the password text.
+
+9
+00:03:18,800 --> 00:03:39,360
+Yeah, these all seem pretty good.Then we have some open questions.And these are questions that Claude Code wants to ask us to kind of clarify certain things about this feature.So for example, should we validate e-mail format before allowing submission?So we could do that or we could leave it to the back end.Let's just say light validation.
+
+10
+00:03:40,840 --> 00:04:08,480
+And should we enforce minimum password length requirements?We're not going to do that on the front end because I'm going to let the back end handle that later on when we use Firebase.So we'll say no for now.Should form inputs persist when navigating between login and sign up?Okay, so if we type an e-mail address out, should it stay there if we're toggling between them?I don't think we really need that functionality.Do we need remember me checkbox?No, we don't need that.
+
+11
+00:04:09,280 --> 00:04:34,800
+And then should we include forgot password link?No, we're not going to include that either.All right then, so we've been through all those questions, and then finally we've got some testing guidelines for when this feature is actually created later.So it's told it to create the test folder, or rather the test file in the test folder.and create tests for these things right here.So again, I'm not going to spend much longer now on this because I want to move ahead to the next step, which is implementing this feature.
+
+12
+00:04:34,800 --> 00:04:55,200
+But I would definitely normally spend a lot more time going through this spec, making sure everything is correct, editing where I don't think it's correct before moving on.So then now we've made a spec file for a new feature, and the next step is to make a detailed technical plan to implement this feature using Claude Code's plan mode, which we'll see in the next lesson.
+

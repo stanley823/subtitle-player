@@ -1,0 +1,96 @@
+1
+00:00:02,240 --> 00:00:13,360
+Okay, so in this lesson, we're going to be taking a look at Claude Code's plan mode, which is a read-only mode for creating implementation plans for new features, like the feature we expect in the previous lesson.
+
+2
+00:00:13,840 --> 00:00:39,520
+Now, when we use plan mode to create a plan, Claude code spins up something called a sub-agent whose specialty is conducting research and gathering information about the code base and any additional context. And that sub-agent is responsible for providing that information back to Claude, the main agent, who then generates a plan markdown file, which is a robust set of instructions for implementing the plan, including code examples, file structure, styling guidelines, and so on.
+
+3
+00:00:40,400 --> 00:00:57,760
+Then, once we have that plan, we can ask Claude Code to use it to implement whatever new feature it describes, and this added step of creating a plan is good, especially for multi-step complex features, because it allows for thorough research about how to best implement those features based on your current code base.
+
+4
+00:00:58,200 --> 00:01:15,440
+And, as a result, you get a comprehensive guide about how to best add that feature to the project based on codebase analysis and not just guesswork. Also, having a plan document in place allows the model to refer back to it when it needs to, track its own progress as it's making the proposed code changes.
+
+5
+00:01:15,840 --> 00:01:34,000
+And I find it better keeps things on track and produces more reliable working results. And finally, since we're making a plan document before any code changes are made, we can always manually refine that plan ourselves before we use it. So then, let's use this plan mode to make a new plan based on the spec we made in the last lesson.
+
+6
+00:01:34,480 --> 00:02:04,360
+The first thing we need to do is enter plan mode, which we can do by hitting shift and tab to cycle through the auto accept edits mode and then again onto plan mode. And you can always tell you're in plan mode because it says so in green down here. But anyway, normally without a spec, you could send a generic prompt like, can you plan the authentication forms on the login and signup pages? And it would make a decent enough plan for that. However, we created a non-technical spec document to describe that feature so we can tell Claude to plan the feature outlined in that spec
+
+7
+00:02:04,680 --> 00:02:33,800
+which contains much more detail about what we expect from the feature, more than just a couple of sentences directly in a prompt here. And this is why I make the spec file first, because it provides us with that high level but detailed outline of the feature, how it should work from a user's perspective and also edge cases to look out for, etc. So we're going to open that spec file now so that it automatically gets added as context to the prompt when we place our cursor inside it. And then I'll say down here,
+
+8
+00:02:34,520 --> 00:02:59,760
+plan the feature described in this spec. All right. And then once we've done that, we can hit enter. Now, when I do that, Claude code is going to go ahead and start running sub agents to explore the code base and perform some research. And I'm going to grant any permissions it needs along the way, which might occasionally be a bash command to list files or something. So I'll speed this up now and then I'm going to come back when it's finished.
+
+9
+00:03:10,160 --> 00:03:34,440
+Okay, so now it's finished. And if you scroll up this chat a little bit, it should give you a small summary of the plan, but probably not the whole thing. And that whole plan file was actually saved in the .claude folder in the home directory on your computer and not in this current project directory. It's also asking us at the bottom down here if we want to implement this plan now right away and allow edits whilst it does that. However, I don't like to implement anything right away.
+
+10
+00:03:34,560 --> 00:03:57,600
+And instead, I like to look over the plan myself first and check everything is correct. And where it's not, I can manually make changes to it. So I'm going to key down to the bottom option down here and say, no, just save the plan to the underscore plans folder for later. I'm also aware we don't have an underscore plans folder anyway in this project. So before we send that response,
+
+11
+00:03:57,960 --> 00:04:25,360
+We need to go ahead and make that folder over here in the root directory. And actually, even if we didn't make this folder first, Claude code would probably figure it out and make it for us anyway. So then, now we can send the response and in turn, hopefully Claude is going to put that plan file inside the plans folder. Okay, so I think it's done that. And if we take a look at that file now, we can read through the plan. Now again, I'm not going to spend long on this because it's a long ass file.
+
+12
+00:04:25,960 --> 00:04:54,400
+And I'm quite aware that it would be really boring for you watching me read through all of this. So let's just quickly skim some of it. And normally, like I said before with the spec, I would spend longer going through this plan, 10, 15, sometimes 20 minutes, just making sure it's absolutely correct before we go any further. But anyway, we've got an overview at the top, which is to implement functional authentication forms for these pages, blah, blah, blah. So first of all, it's listed a bunch of critical files and new components that needs to create. So it's decided we want an input.
+
+13
+00:04:55,120 --> 00:05:23,920
+component for text inputs along with the module CSS for that and the barrel export. Same for the password inputs. Same for a custom button down here. Then we're going to have a component for the login form. All right, so it's not creating the template directly inside the form itself, inside the page itself, I guess. It's creating a component for that, which I'm fine with. Same for the signup form. Additional pages to update. So you have the login and signup page. These are the updates we need to add to them.
+
+14
+00:05:24,760 --> 00:05:41,120
+Then test files to create, so we've got test files for each of these different components. Then we have the implementation step. So this is the plan itself, I guess. These are all the things it needs to create, and this is the plan. So step one, create the input components, and there's some details about how to do that right here.
+
+15
+00:05:41,880 --> 00:06:10,440
+And then down here, the styling approach, use apply for Tailwind utilities, reference theme variables for colours, style focus states with primary colour, add border and padding for input fields. Okay, all pretty good. Create password input component, pretty much the same as this one, I guess. And then icon usage. Okay, so it's showing how to use icons for the password field. So we've got I and I off, and they're coming from the icons package that we're currently using. Good. Same styling approach down here.
+
+16
+00:06:11,840 --> 00:06:36,800
+And then we have the create button component. All right, looks okay. And then implementation, use type equals submit by default for the button, support disabled state with reduced opacity, keep existing hover transition from the button class. So it's where we've already created that button class. And like I said, this is what the plan mode is really good for. It's not just created this plan from scratch as if we've got a blank project. It's looked at our project first.
+
+17
+00:06:37,280 --> 00:06:58,400
+It's seen that we have this button class, it's seen that we've created components this way, where we've got three different files for each component. It's seen that we use this reference directive from Tailwind inside the CSS module, so it's explored the code base and it's based a plan on our current project, which is why this is so good.
+
+18
+00:06:59,000 --> 00:07:26,560
+All right, so down here we've got the create the login component step. So it's going to create the login form component with an email import, the password input component, the submit button component, et cetera. So it's creating all those UI components first of all, then it's kind of putting them all together in the login form. And it's got a code example here of how to create that using the input, the password input, and the button components. Then we've also got this link to switch to the sign up page instead.
+
+19
+00:07:27,440 --> 00:07:55,440
+For the handler, we've got prevent the defaults form submission behavior, log e-mail and password to console, use controlled inputs with react states, some validation criteria here. And then the next step is to create the signup form component, same kind of things as the login one. And then we update the login page and the signup page to include those login components and the signup components. Then we create the tests down here to test everything and we've got
+
+20
+00:07:56,200 --> 00:08:25,280
+Different guidelines for each of the different components, which is good. We've got some design decisions down here. All right, so component architecture is basically explaining why we're doing certain things, which is nice. So it said separate login form and sign up form components. So while they're similar, we're keeping them separate and that follows single responsibility principles and makes future divergence easier. So yeah, I would agree with that. Reusable input components, so input and password input can be reused across the app, again, I like that.
+
+21
+00:08:25,800 --> 00:08:51,840
+And then the button component, same as. A styling strategy. So yeah, just some things we've seen before. Form state management. We're going to be using new states. We've got a validation approach right here. And then navigation between forms. It's using the link components. Technical considerations. So we're creating TypeScript interfaces for the different props, like the input props right here. Accessibility.
+
+22
+00:08:52,680 --> 00:09:20,080
+Yeah, aria labels, et cetera, icon integration, so the different icons we use. It's picked up as per the claude.md file that we don't wanna use semicolons, which is nice. Then we've got some verification steps as well. So you can do visual checks, functionality checks, bladder, bladder. So this is a really extensive plan. Okay, so I really like this feature. If I was just to use prompts in the chat of my own,
+
+23
+00:09:20,760 --> 00:09:46,320
+It wouldn't go to this length to make sure that this feature fitted correctly in our project and paired with the spec that we created, which was a kind of detailed high level specification. I think it's really powerful for adding new features. And this is the way I like to work. All right then my friends. So now we've done the first two steps, right? We have made a high level non-technical spec. And now we've also made a more detailed technical plan.
+
+24
+00:09:46,960 --> 00:10:06,800
+Next, we just need to use this plan to implement the feature, which we'll do in the next lesson using extended thinking mode. But before we do that, I normally make a commit at this point to commit the new spec file and the plan file to the history. And that way, if the implementation doesn't go well, we can always rewind to this commit before we make any code changes and try again.
+

@@ -1,5 +1,6 @@
 [
   {
+    "playlist": "Claude Code Tutorial",
     "num": 1,
     "short": "Intro & Setup",
     "url": "https://www.youtube.com/watch?v=SUysp3sJHbA",
@@ -7,6 +8,7 @@
     "secondary": "Claude_Code_Tutorial_1_-_Introduction_and_Setup_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 2,
     "short": "CLAUDE.md Files",
     "url": "https://www.youtube.com/watch?v=i_OHQH4-M2Y",
@@ -14,6 +16,7 @@
     "secondary": "Claude_Code_Tutorial_2_-_CLAUDE.md_Files_and__init_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 3,
     "short": "Context",
     "url": "https://www.youtube.com/watch?v=ob-mYGqqFQw",
@@ -21,6 +24,7 @@
     "secondary": "Claude_Code_Tutorial_3_-_Context_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 4,
     "short": "Tools & Perms",
     "url": "https://www.youtube.com/watch?v=TU0ZcDFq0e0",
@@ -28,6 +32,7 @@
     "secondary": "Claude_Code_Tutorial_4_-_Tools_and_Permissions_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 5,
     "short": "Planning",
     "url": "https://www.youtube.com/watch?v=MTGJuu9CeMk",
@@ -35,6 +40,7 @@
     "secondary": "Claude_Code_Tutorial_5_-_Planning_and_Thinking_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 6,
     "short": "Slash Commands",
     "url": "https://www.youtube.com/watch?v=52KBhQqqHuc",
@@ -42,6 +48,7 @@
     "secondary": "Claude_Code_Tutorial_6_-_Slash_Commands_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 7,
     "short": "MCP Servers",
     "url": "https://www.youtube.com/watch?v=X7lgIa6guKg",
@@ -49,6 +56,7 @@
     "secondary": "Claude_Code_Tutorial_7_-_MCP_Servers_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 8,
     "short": "Subagents",
     "url": "https://www.youtube.com/watch?v=Phr7vBx9yFQ",
@@ -56,6 +64,7 @@
     "secondary": "Claude_Code_Tutorial_8_-_Subagents_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 9,
     "short": "With GitHub",
     "url": "https://www.youtube.com/watch?v=7pKN_pjPW04",
@@ -63,6 +72,7 @@
     "secondary": "Claude_Code_Tutorial_9_-_Claude_Code_with_GitHub_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": 10,
     "short": "Final Tips",
     "url": "https://www.youtube.com/watch?v=cCHPjvswTpQ",
@@ -70,10 +80,43 @@
     "secondary": "Claude_Code_Tutorial_10_-_Final_Thoughts_and_Tips_zh-TW.srt"
   },
   {
+    "playlist": "Claude Code Tutorial",
     "num": null,
     "short": "Masterclass",
     "url": "https://www.youtube.com/watch?v=Lr37J1ZUeZI",
     "primary": "New_Claude_Code_Masterclass!.srt",
     "secondary": "New_Claude_Code_Masterclass!_zh-TW.srt"
+  },
+  {
+    "playlist": "Spec Driven Workflow",
+    "num": 1,
+    "short": "Making /spec",
+    "url": "https://www.youtube.com/watch?v=e_D9M_MJ9Hs",
+    "primary": "Spec_Driven_Workflow_with_Claude_Code_1_-_Making_a__spec_Command.srt",
+    "secondary": "Spec_Driven_Workflow_with_Claude_Code_1_-_Making_a__spec_Command_zh-TW.srt"
+  },
+  {
+    "playlist": "Spec Driven Workflow",
+    "num": 2,
+    "short": "Creating a Spec",
+    "url": "https://www.youtube.com/watch?v=JnHUZ8037zE",
+    "primary": "Spec_Driven_Workflow_with_Claude_Code_2_-_Creating_a_New_Spec.srt",
+    "secondary": "Spec_Driven_Workflow_with_Claude_Code_2_-_Creating_a_New_Spec_zh-TW.srt"
+  },
+  {
+    "playlist": "Spec Driven Workflow",
+    "num": 3,
+    "short": "Using Plan Mode",
+    "url": "https://www.youtube.com/watch?v=CmrmmszC_F4",
+    "primary": "Spec_Driven_Workflow_with_Claude_Code_3_-_Using_Plan_Mode.srt",
+    "secondary": "Spec_Driven_Workflow_with_Claude_Code_3_-_Using_Plan_Mode_zh-TW.srt"
+  },
+  {
+    "playlist": "Spec Driven Workflow",
+    "num": 4,
+    "short": "Implementing",
+    "url": "https://www.youtube.com/watch?v=BdDuVOfE0eQ",
+    "primary": "Spec_Driven_Workflow_with_Claude_Code_4_-_Implementing_the_Plan.srt",
+    "secondary": "Spec_Driven_Workflow_with_Claude_Code_4_-_Implementing_the_Plan_zh-TW.srt"
   }
 ]
