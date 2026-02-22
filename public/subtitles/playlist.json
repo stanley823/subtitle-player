@@ -118,5 +118,13 @@
     "url": "https://www.youtube.com/watch?v=BdDuVOfE0eQ",
     "primary": "Spec_Driven_Workflow_with_Claude_Code_4_-_Implementing_the_Plan.srt",
     "secondary": "Spec_Driven_Workflow_with_Claude_Code_4_-_Implementing_the_Plan_zh-TW.srt"
+  },
+  {
+    "playlist": "other",
+    "num": 1,
+    "short": "TMUX + Claude Agent Teams",
+    "url": "https://www.youtube.com/watch?v=Dyj9ShddyMw",
+    "primary": "TMUX_+_Claude_Agent_Teams_=_Game_Changer.srt",
+    "secondary": "TMUX_+_Claude_Agent_Teams_=_Game_Changer_zh-TW.srt"
   }
 ]

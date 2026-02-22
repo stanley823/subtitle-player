@@ -1,0 +1,192 @@
+1
+00:00:00,080 --> 00:00:20,960
+In this video, we're going to take a look at Claude's latest feature, Agent Teams.And first of all, we're going to take a look at what is Agent Teams, and what is the difference between sub-agents and the Agent Teams, what problem does Agent Teams try to solve, and then we're going to dive into how to set this up on your local machine, how we can be able to use Tmax here to basically view all the Agent Teams members here inside of one terminal sessions, inside of Claude code.
+
+2
+00:00:21,040 --> 00:00:42,240
+And that's, we're also going to take a look at how to start a project, how to manage it, how do we interact with each agents, how do we communicate it, and be able to eventually complete the projects.going to take a look at how to convert this into a claw scale so that we can be able to reuse it in the future.So pretty much that's what we cover in this video and if you're interested let's get into it.Alright so before we jump in a quick intro for those who are new here.
+
+3
+00:00:42,400 --> 00:01:12,160
+My name is Eric and I spent years as a senior software engineer at companies like Amazon, AWS and Microsoft and I have started this channel to share everything that I learned along the way from AI encoding to automationsweb3, career developments, and more, all broken down into practical tutorials that you can actually follow.And of course, we also have a school community where you can get access to all the resources.templates, plus our community supports.So if you're ready to level up, make sure to check out my YouTube channel and hit that subscribe button.
+
+4
+00:01:12,400 --> 00:01:37,280
+Now let's get back to the video.Alright, so to get started, first thing first, I want to topple the difference between agent teams, sub-agents, and default mode.So now let's take this as an example, right?Let's say you're a developer here, you're trying to write the UI component for the upload, the server-side for the edge functions, building the matching algorithm, and writing a test, right?That's basically your task, and what happened here is that you're using a default mode,One agent only has one context window.
+
+5
+00:01:37,520 --> 00:02:05,160
+So if you're going to complete a task with one agent, you will basically complete this task sequentially, which means that you first write the upload UI component, write the SuperBase Edge functions to handle this, building the matching algorithms and writing tests sequentially one after the other.Now, this approach might be slow, but the other problem that is very severe is that the higher the context, the lower the accuracy, which means that as the task getting more complex and the context window start to fill up, the accuracy start to get lower, and that's really what the sub-agent
+
+6
+00:02:05,240 --> 00:02:28,400
+really try to solve is that we're trying to reduce the complexity for each agent by having multiple sub-agents here running at the same time.So given the same task, for example, writing the UI, the edge functions, and building the matching algorithms and writing a test, right?We can literally divide this work into multiple sub-agents where one agent focuses on the UI, the other one is focusing on the backend, the other one is focusing on the matching algorithm.
+
+7
+00:02:28,480 --> 00:02:52,640
+And pretty much we can have the main context window here as become an orchestrator, but divide task into multiple sub-agents, therefore we have lesscontext window for each subagent right here.But the problem here is that there's no communication between different subagents.For example, let's say we have the subagent #1, building the UI for the uploader, and it has defined the data types for that.And let's say we have our sub-agent number two here building the edge functions, and it has also defined the data types for that as well.
+
+8
+00:02:52,720 --> 00:03:17,080
+But because there's no communication between the sub-agents, they have no idea if the types that it defines in the frontend is aligned with the backend.And what happened then is that after the task is completed, they run the applications, they realize that the types checks are different, then it got an error, right?Because there's no communication on what the sub-agent one does that sub-agent two have to know about.So that's what the core issue that the agent team here is trying to solve, where now you can see that we have our agent team,
+
+9
+00:03:17,520 --> 00:03:39,360
+and the team leader here will basically spend multiple sub-agents and what's going to happen here is that for each sub-agent, it can be able to communicate with each other.For example, after the backend sub-agents here complete the job, it will basically send the data types that it creates to the frontend sub-agents and the frontend sub-agent here will take that types that the backend creates and be able to define the types in the frontend as well.So that there's no miscommunication and no misalignment between different sub-agents work.
+
+10
+00:03:39,520 --> 00:04:04,720
+And clearly you can see that this is the benefits of agent teams is that we have a shared communications between all the sub-agents that we have.And to summarize everything, basically the defaultagent here has only one context window, some agents here have isolated contacts but cannot talk to each other, and the agent teams on the other hand can be able to enable like full parallel collaborations between multiple agents, and multiple agents here can directly communicate to each agent right here.So pretty much that's the difference between those three modes instead of claw code.
+
+11
+00:04:04,800 --> 00:04:22,320
+Alright, so now you know the difference, let's take a look at how we can be able to set this up on our local machine, but first thing first we're going to do here is to make sure that we have the latest version in our claw code in our local machine.So what we're going to do here is I'm just going to jump back to my terminal.No matter if you're in a project or in a brand new terminal in the root directory, all you have to do here is just do clod updates.
+
+12
+00:04:22,720 --> 00:04:39,280
+And this will basically update the current version to the latest version that we have in our clod code.It's just going to check for updates with the latest version.And here you can see that it will basically update my clod code with the latest version, which you can see that we have that updated already.So next thing we're going to do here is basically try to set up the configurations and the Tmax.
+
+13
+00:04:39,520 --> 00:04:59,680
+And Tmax is basically trying to do here is basically a way for you to create multiple terminal windows here inside of your terminal so that you can be able to have communications with different agentsindividually with its own terminal windows.Now so in this case to install this what we're going to do here is just going to do brew install and we're just going to do type in tmax and we're just going to hit enter and we'll basically install this using homebrew.
+
+14
+00:04:59,760 --> 00:05:17,080
+Okay so now you can see that we have this successfully installed and after we have this installed here you can see this is where we can have our display mode which the agent teams here supports two display modes.One is in progress where we're going to have one terminal sessions using shift and up/down or key to basically select which teammates we wanted to communicate with or the other way we can do is to have
+
+15
+00:05:17,280 --> 00:05:32,800
+a split panels and basically what's going to happen is you can see everyone's output at once by clicking on the section to interact with it using Tmax.Okay, that's why I'm trying to use Tmax here inside of Clawcode.Alright, so now to basically enable the Tmax here inside of Clawcode, all we have to do here is just run this command in the root directory.
+
+16
+00:05:32,880 --> 00:05:47,080
+So now I'm just going to open a terminal right here and basically paste that command and what's going to happen here is basically going to enable the Clawcode agent teams mode to be true and also the Tmax split panels here to be true as well.So here I'm just going to enter this and we basically have those settings
+
+17
+00:05:47,200 --> 00:06:06,560
+set in place all right so now what we can do here is basically start our Tmax new sessions with Claude so what we can do is we're just going to run this command right here and I'll make sure to put this inside of our school community so you can get access to this entire guide inside of our video resource so all we have to do here is I'm going to first cd into my desktop and cd into my bookkeeping applications
+
+18
+00:06:06,960 --> 00:06:28,400
+And then what's going to happen, I'm just going to paste that command right here for Tmax new sessions.So currently I'm inside of the project I'm trying to build.And simply I'm just going to run this command right here.And you can see that this is what we have.So we're inside of Tmax mode.And now what we're going to do here is basically try to run Claude with the dangerously skip permissions.And I'm just going to have a Claude sessions inside of the Tmax mode.
+
+19
+00:06:28,800 --> 00:06:40,080
+So first thing first, here you can see that it's prompted saying that yes, running in the bypass permission mode.I'm just going to say yes, accept.And here you can see that we have our claw code sessions inside of this current project directory.
+
+20
+00:06:40,240 --> 00:07:00,920
+All right, so now once we have the setups done and also the overview, now let's take a look at how we can reuse it, how we can reuse the agent teams inside of our projects to basically start it up, be able to manage it, be able to shut it down, be able to build our projects using agent teams.So in this case, I'm just going to come back to my terminal here.And what I'm going to do here is I'm just going to copy this prompt and paste it into claw code.And here is what this prompt says.
+
+21
+00:07:00,920 --> 00:07:03,480
+So basically the goal is we want to research the direct bank connection
+
+22
+00:07:04,120 --> 00:07:33,480
+either through these providers right here and that will can be able to automatically import transactions into our applications and that's the goal and basically what we want to do here is that this the keyword is to create a team and basically if you were to look at documentation on how to trigger the agent teams all we have to do here to specify the create a agent teams to explore to build something to research something right that will basically trigger the agent team here to run it automatically in your cloud code no slash commands just the keyword on create a agent teams or create
+
+23
+00:07:33,560 --> 00:08:03,480
+team so here you can see I just said I create a team called this four parallel agents and after they complete the jobs we'll basically aggregate the findings into this MD file right here and I also have give a reference to Jira ticket so they can trigger the Jira MCP server to pull the context about what the ticket is about and here you can see that we have our different agents we have our business agents we have our financial agents technical architectures and devil advocates let's go through them one by one so here you can see that we have our agent one here so what I have here for the format is that I have a name I have a model and I also have
+
+24
+00:08:04,560 --> 00:08:26,240
+Now, of course, I've also made a video here on top of how you can be able to create your own sub-agents for different situations in your application building.Now, of course, if you want to learn more about sub-agents, you can check out this video right here where you can learn more about how sub-agent works, how you can create your sub-agents, and basically what you can do with your sub-agents, right?So what I did here is I specified the sub-agents that's going to be working on this task, right, for this agents, focusing on the business and products.
+
+25
+00:08:26,560 --> 00:08:49,040
+And the goal here is that it's going to use the web search here to gather the competitor and the market data and it's going to analyze it, right, try to analyze thecompetitors, try to see what are the market fit look like, the user experience, the impact analysis, and try to aggregate those results.And that's what the agent one is trying to do.And we also have our agent two here, which focuses on the financial cost.So which provider we're going to use and what is the cost for that?
+
+26
+00:08:49,040 --> 00:09:14,720
+And we're going to have a cost projection here table to show that.And that's basically Agent 2 for the financial and cost.And then the Agent 3 here is the technical architecture.And notice here that I also changed the model here to be Opus because the work that Agent 3 completes here is gonna be very complex.So that's why I assigned the system architect sub-agent here for the Opus model with the technical architecture.We're gonna architecture this project by using the abstraction layer.Basically it means that it doesn't matter which provider we're gonna use, right?
+
+27
+00:09:15,040 --> 00:09:44,960
+we're just going to create extraction similar to a repository pattern where the application here is going to call that repository or call that extraction layer for the service let's say in the future we're going to switch from playing to Flink simply just changing that service in the config or simply just changing that in the repository and it will basically affect that from all the applications that will basically use that providers right so we're creating abstraction layer to abstract the dependencies for different providers we're going to use and that's why we have it here okay and here you can see that I also mentioned we're going to use a mermay diagram here for the architecture
+
+28
+00:09:45,080 --> 00:10:14,960
+overview and these are the skills we're going to trigger and these are sub agents that we can have right so you can see that we have our agent three now agent one and three here you can see that they are all standalone agents which means that they don't have to communicate to each other because you know they're all working on their own task but for agent four here I specifically mentioned that you can be able to communicate to each agents here directly and basically this agent here is a general purpose agent is basically act as a devil advocate it's going to challenge stress test any findings from agents one to three for any task that it's trying to do so that's basically the
+
+29
+00:10:15,400 --> 00:10:44,960
+four agents that I'm going to spin up and this is the entire prompt and lastly we also have our lead which is basically our tech lead that spin up those four sub agents here to do the work and at the end of it it's going to aggregate the data and be able to conclude everything like the followings so basically that's my prompt and what I'm going to do here is I'm going to copy this come back to my terminal and I'm just going to paste it right here all right so then in this case I'm just going to run this and let's take a look at what it does all right so now you can see it's going to set up the research team here first take a look at the Jira ticket by calling the Jira MC server all right so once we have
+
+30
+00:10:45,080 --> 00:11:08,760
+the full context from both Jira and the existing backlog, now it's going to create a team and spin up four research agents.So here you can see it's going to create the four agent teams, basically try to set up the tiles tracking, spin up all four research agents here in parallel.All right, so now you can see that we have two sub-agents here spin up.One is the business products, the other one is the financial cost.And we can literally just type in anything here inside of those sub-agents here to communicate.
+
+31
+00:11:08,880 --> 00:11:33,400
+And here you can see it's going to spin up another sub-agent here called the technical architect.which is going to do the work and I could be typing anything here to communicate with the different sub-agents.And lastly, we also have our devil advocate here, got spin up, which will basically question everything that the agent here is trying to do.Now, if I want to switch to between here, you simply just use the keyboard here to do the Ctrl+B.So you can see Ctrl+B.I can switch over to the main chatbot here.I can tab.
+
+32
+00:11:33,400 --> 00:12:00,440
+Here is what I have to check on the devil advocate's progress.If I want to switch over to specific agent, for example, I want to switch over to the architecture, I just do Ctrl+B.You can see that at the bottom here changed the architecture design.So now if I were to type, you can see that I have switched over to the architecture.I can also switch over to the green side, which you can see here.So the hidden bank interaction cost by using the Ctrl+B up arrow and down arrow, simply just looking at this, it'll switch it over.
+
+33
+00:12:00,600 --> 00:12:23,560
+I can also shift it over to the open bank research questions.I can also be able to say things like, Hey, how's it going?How's it going?I can be able to interact with this agent.But clearly, if you just want to follow through instead of here in the terminal, I can just control B left, and it'll basically navigate me here to the root, which here you can see I can be able to talk to the main agent here, the orchestrator, which will basically orchestrate the entire thing.
+
+34
+00:12:23,960 --> 00:12:46,120
+So in this case, I'm just going to wait for a bit until everything.synthesizing for the final research reports.So now you can see eventually we have the entire research has complete.And if I want to scroll up and down, simply just do control B and using the square bracket, the left square bracket, it'll basically help you to scroll up and down.So you can see I was able to scroll up and down here to figure out, okay, what has been done.
+
+35
+00:12:46,440 --> 00:13:13,560
+So we have the output files, the agent one, the agent two, the results, and we also have the research and here we also have the entire research summary and all the files have been addedit, which we can see here.So pretty much that's how we can use the agent team here to start it, to manage it, to complete it.So in this case, let's take a look at what the result look like by simply now getting to VS Code.And I'm just going to open this in preview here.And here you can see that this is our final report.
+
+36
+00:13:13,880 --> 00:13:41,880
+So first thing first, you can see that we have our table of content.So we have our go or no go recommendations.So should we implement this feature or not implement this feature?And we also have the provider recommendations for using this feature, what is the cost breakdown,architecture if we're going to build this, the risk and also the implementation phases and the appendix and such.So here you can see the final reports.So we have what are the reasons why we should go with this because all the competitors are using this because this will save time for the consumers.
+
+37
+00:13:42,600 --> 00:14:10,840
+then there's also the list of against so why we should not use this feature for example only 53% of the consumers comfortable sharing their financial data it can also be a barrier of entry for small platform like this right there's also the connection reliabilities and here is the provider recommendation after it has done the research so if we're going to only focus on Canada then that's going to be flanks if we're going to use the US expansions we might want to choose a different providers so pretty much this is the breakdown and here is the cost
+
+38
+00:14:11,240 --> 00:14:41,120
+Here's the pricing.So stuff like this.So this is the provider strategy.So for the 1,000 user, maybe we're going to focus on Canadian first.And for 1,000 to 2,000, we're going to expand to US market.This is what we have here.Scale, so stuff like this.Why not use other providers?It gives you the reason.And here's the cost summary.So per provider cost at scale.So let's say your user only has two bank accounts.Roughly for 100 users, this is how much it will be charged.And because there is different tiers for playing where, oh, if you have more users,
+
+39
+00:14:41,400 --> 00:15:09,400
+Each user here is gonna pay less.So that's basically what you get here, okay?And of course, there's also the flanks here.So let's say if we only wanna focus on flanks, this is how much it costs, okay?So pretty much that's the comparison and the architecture recommendation here you can see, this is all the things that it creates for the abstraction layer.And also here you can see the database schema, right?The jobs, the connected accounts, ID.the expanded column here for the bank transactions, right?So stuff like this.
+
+40
+00:15:09,520 --> 00:15:37,400
+And there's also the bank connection providers here.So it has to scan through the documentations and try to create something like this that we're gonna use inside of our application, like disconnect, get account details, sync the connections, or refresh the authorizations here, stuff like that, okay?So pretty much that's pretty much the entire research.Overall, I won't go too much in detail here.There's also individual file, but pretty much that's how we can be able to use the agent teamsspin up multiple sub agents here to run it, to manage it, and be able to finish it.
+
+41
+00:15:37,560 --> 00:15:48,280
+Alright, so lastly, what I want to talk about is basically how you can convert everything here into a claw skill, because running this could be challenging, right?You tell us what to do, what to research, and you have to write a long prompt just like what you see here.
+
+42
+00:15:48,280 --> 00:16:07,640
+And so instead of like creating a claw skills from scratch by simply just prompting it, what I recommend to do is that after you finish the entire run, which here you can see this is the entire run, and all I have to do here just basically prompted the claw here after I finish a session, and I'm just simply going to say, based onthis conversation that we have, can you create a skill that I can be able to reuse it in the future?
+
+43
+00:16:07,880 --> 00:16:33,120
+And simply all I had to do here just pass the parameter on exactly what's the research topic or what's the Jira ticket.And simply you can be able to run it and be able to find the context or be able to give the research idea here like what we just set up today with four sub agents.Can you create a skill?And that's basically my prompt.And I'm just going to run this and have it to basically create a skill based on this current conversation that we just went through.Alright, so now you can see that after it has
+
+44
+00:16:33,200 --> 00:16:52,840
+create the skill, this is basically how we can use it.We simply just do slash research team and we basically put the ticket number, right, for the Jira ticket, or we can also be able to specify that in the free text mode.There's also the custom output directories, so stuff like this.We can be able to use that.Literally, I can be able to use a test topic here and do that.
+
+45
+00:16:52,840 --> 00:17:13,720
+So pretty much that's how we can be able to reuse it by simply just building a skill and be able to spin up those four sub-agents that we just mentioned.And if you actually want to learn more about the skill, you can click on the skill, click on the research team that you just created, and clearly you can see that we have the four agents here.So phase one is going to be research, spin up three sub-agents with fresh context, and we also have the challenge here, which is the advocates.
+
+46
+00:17:14,560 --> 00:17:37,720
+basically try to read through all the research file and challenge the assumptions.And then the phase three here is reading through all four files, write a final report.So pretty much that's how it works.We put everything into a scale so that we can easily just reuse that going forward.Alright, so pretty much that's it for this video.In this video, we went over what is agent teams, how's it different compared to like sub agents and the default mode and what is the problem that agent teams trying to solve.
+
+47
+00:17:38,240 --> 00:17:54,840
+as well as how we can be able to set up the Asian teams here using T-Max and also how we can be able to start a session, manage a session, and also shut down the session as well.And eventually we can be able to create a claw scale here to reuse this going forward without us having to repetitively...communicate to each individual sub-agents here to do so.
+
+48
+00:17:55,000 --> 00:18:12,600
+So pretty much that's it for this video and if you do familiar with this video, please make sure to like this video, consider subscribing for more content like this, and I'll make sure to put the entire guide on how to do this inside of the school community so you can be able to copy this and run on your local machine step by step.So with that being said, thank you very much for watching and I'll see you in this video.
+
