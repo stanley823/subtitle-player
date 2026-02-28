@@ -11,10 +11,7 @@ export async function fetchPlaylist() {
 /** Fetch a single SRT file's text content. Returns null if not available. */
 export async function fetchSrt(filename) {
   if (!filename) return null
-  const res = await fetch(`${SUBS}${encodeURIComponent(filename)}`)
+  const res = await fetch(`${SUBS}${filename}`)
   if (!res.ok) return null
-
-  console.log(res)
-
   return res.text()
 }

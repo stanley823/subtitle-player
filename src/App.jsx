@@ -30,8 +30,8 @@ function readFile(file) {
 
 // ─── Last playlist item persistence ──────────────────────────────────────────
 const LAST_ITEM_KEY = 'subtitle-player-last-item';
-const saveLastItem  = (item) => { try { localStorage.setItem(LAST_ITEM_KEY, JSON.stringify(item)); } catch {} };
-const clearLastItem = ()     => { try { localStorage.removeItem(LAST_ITEM_KEY); } catch {} };
+const saveLastItem  = (item) => { try { localStorage.setItem(LAST_ITEM_KEY, JSON.stringify(item)); } catch { /* ignore */ } };
+const clearLastItem = ()     => { try { localStorage.removeItem(LAST_ITEM_KEY); } catch { /* ignore */ } };
 const loadLastItem  = ()     => { try { const r = localStorage.getItem(LAST_ITEM_KEY); return r ? JSON.parse(r) : null; } catch { return null; } };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -41,8 +41,21 @@ function buildSession(videoId, primaryContent, secondaryContent) {
 
   if (secondaryContent) {
     const rawSecondary = parseSRT(secondaryContent);
-    const { primarySubs, secondarySubs } = alignEntries(rawPrimary, rawSecondary);
-    const stats = `主字幕：${primarySubs.length} 句｜第二字幕：${secondarySubs.length} 句（對齊）`;
+    const ratio = rawPrimary.length && rawSecondary.length
+      ? Math.max(rawPrimary.length, rawSecondary.length) / Math.min(rawPrimary.length, rawSecondary.length)
+      : 1;
+
+    if (ratio <= 2) {
+      // Tracks have similar structure — align them for synchronized display
+      const { primarySubs, secondarySubs } = alignEntries(rawPrimary, rawSecondary);
+      const stats = `主字幕：${primarySubs.length} 句｜第二字幕：${secondarySubs.length} 句（對齊）`;
+      return { videoId, primarySubs, secondarySubs, stats };
+    }
+
+    // Tracks have very different entry counts — expand independently
+    const primarySubs = expandEntries(rawPrimary);
+    const secondarySubs = expandEntries(rawSecondary);
+    const stats = `主字幕：${primarySubs.length} 句｜第二字幕：${secondarySubs.length} 句（獨立）`;
     return { videoId, primarySubs, secondarySubs, stats };
   }
 
