@@ -1,0 +1,136 @@
+1
+00:00:00,080 --> 00:00:23,760
+Hello, Legends.In this video, we'll be diving into the new Cloud Opus 4.6, and we'll be explicitly exploring the new Agent Teams.So I'm going to be running an experiment in this video where I'm going to be spooling up a Cloud Code instance using the Opus 4.6 model, getting one agent to build out a certain project for us.And then I'm going to be spooling up another Cloud Code instance, enabling the Agent Teams mode, then giving the exact same prompt, and then comparing the results.
+
+2
+00:00:24,160 --> 00:00:42,080
+So I wanna quickly touch on the anatomy of an agent team versus what we previously had, which was a sub-agent.So sub-agents work by receiving a very specific prompt, then that prompt is actioned and completed, and then only the results of the completion are shared back with the main context window.Whereas agent teams are a little bit more sophisticated.
+
+3
+00:00:42,080 --> 00:01:10,000
+So when we enable the agent team, we actually first pull up a team lead that manages a number of different prompts, depending what kind of tasks we need to complete, the team leader will then distribute those prompts amongst very specialized teammates,And all of these teammates actually spool up their own instance of Claude code.So this is important to note because sub-agents actually work within the one instance or the one session, but then each of these guys actually runs in their own isolated and dedicated session.So the sub-agent, there is...
+
+4
+00:01:10,440 --> 00:01:38,480
+lower token consumption and technically speaking, a lower quality of output.They're meant to be used for like simpler tasks.But when you're using an agent team, because they have their own instance, they can actually use a lot more tokens and they can run more independently.Now the interesting thing is that all these guys can actually speak between each other.So if teammate A is working on the front end, teammate B is working on the back end, if teammate A gets stuck, they can directly communicate with teammate B to kind of get unstuck or to try and figure things out.
+
+5
+00:01:38,760 --> 00:02:00,240
+And they can keep communicating back andbetween the team lead and then the teammate.Whereas in this instance, you'd pull up the sub-agent that would complete the task and then communicate it back.And if they had to do another run at completing a specific part of work, it wouldn't actually be a direct communication.It would just kind of be very transactional in nature.And then the final interesting thing is that we can actually speak to any one of the team members at any time.
+
+6
+00:02:00,480 --> 00:02:26,880
+So when we're in the Claude Code terminal, we'll see later on that we actually have access to toggle between the team leader and any of the open teammates and just communicate with them directly so we can change their scope of work, getfeedback on what they're working on, and even try and unblock them if they get stuck.Anthropic summarizes the difference really well over here, where they say sub-agents are better at working at smaller, more focused tasks, and then agent teams are better at figuring out complex problems where they can collaborate together.
+
+7
+00:02:27,120 --> 00:02:50,720
+So here's a really good example of when you would actually fire off an agent team.So if you want to review a code base, typically when you just issue one agent that task, they'll latch onto one theme or one key area, and then struggle to actually diversify their approachWhereas if you have an agent team, you can give each of those members in a team a different distinct area to focus on.Therefore, each of these areas will get an appropriate coverage from each agent.
+
+8
+00:02:50,920 --> 00:03:15,640
+And the second example from Anthropic is in a very similar light, where if you want to understand a complex issue, typically one agent will again just find one possible explanation, one key theme, latch onto it.So then you actually want to prompt up an agent team and then give different members of the team distinct areas to explore and to look at.So I've got two instances of cursor open up.I've got a normal instance where I'll just be using one agent to build out this prompt for us.
+
+9
+00:03:15,640 --> 00:03:38,160
+And then another instance where I'll be spooling up an agent team and giving it the exact same prompt.So I'm just spooling up the very first instance using this single agent.I'm asking it to build me a very basic task manager app as a single page web application.So it's nothing fancy.It's just enough for us to test this out and see what happens.So now in our next terminal, in order for us to set this up, we first have to initialize agent teams.
+
+10
+00:03:38,320 --> 00:04:02,880
+So to enable agent teams, we have to go into our settings.json file and then add this environment variable, which is Claude Code Experimental, and then toggle it to equal 1.So just before we do that, make sure that you're running the latest version of Claude Code.And you can just check which models you have available to you by going into /model.And once you get into here, you've got two different options for an Opus 4.6 model.You have the regular Opus 4.6.
+
+11
+00:04:03,040 --> 00:04:31,200
+Then you also have the 1 million token context 4.6, which is better for those longer sessions and more complex tasks.If you toggle with your keyboard left and right, you also see that on the very bottom, you can toggle your reasoning effort.So you go low effort, mid effort, and then high effort, where high effort basically uses unrestricted amount of tokens, which will give you better results for more complex tasks and bigger project builds.I'm gonna leave mine on low effort and just gonna use the regular Opus 4.6 model.
+
+12
+00:04:31,520 --> 00:04:58,320
+And I'm gonna ask Claude Code to initialize the, basically change the settings for me so we can initialize agent teams.So Claude's found that file.Let's just give it permissions for this session.And it's identified the change that it has to make.So it's going to be adding exactly what we had in the instructions.So I'm going to go yes once again.And done.Looks like Claude code has made that change for us in the settings.json file.Now, important to note, we cannot start an agent team in this specific session.We have to restart Claude code.
+
+13
+00:04:58,480 --> 00:05:22,960
+So to do that, you can just go into plus and then go into a new terminal.restart ClaudeCode here, and now Claude will be able to access the agent teams.So it's important to know when we want to initialize a new agent team at the prompt level, we have to explicitly give those instructions to ClaudeCode.We have to say, create an agent team to XYZ to complete some kind of task or project for us.And here is our prompt.So create an agent team to build out the following for us.
+
+14
+00:05:22,960 --> 00:05:45,440
+And this is the exact same prompt that we gave to the very first instance on Cursor, where we had just the single agent working on this project.So here we are, ClaudeCode is immediatelytelling us I'll create a team to build out this task manager app in parallel.Let me set up the team and then break down the work.So first we're building out the plan of what we need built and then we'll be assigning each of those items from the plan to a separate agent on our team.
+
+15
+00:05:45,760 --> 00:06:10,800
+So now we're supporting up the teammates for each task that we created.So the first task is to create the HTML and CSS.So the UI builder is going to be working on the HTML and CSS.Once that's done, I'll spawn up the JS developer to add the application logic.Let me wait for the first task to complete.So after each task was definedthen Claude Code was able to spin up the teammates.So it's found the very first teammate, which is building out the looks like the front end, the HTML and CSS.
+
+16
+00:06:11,080 --> 00:06:35,520
+And then on the bottom over here, we can see that there's two teammate agents already deployed.We have the main agent, which is the person that's the actual team lead, and then we have the UI builder agent.And if I hold shift and I press up and down arrows, I can see that I have access to the team lead to speak with them directly.And if I press shift and then down, I have the UI builder.Now in this instance, the app is pretty simple, but I've actually built outa couple of apps where there's three agents working in parallel.
+
+17
+00:06:35,840 --> 00:06:58,800
+And we just click yes for these edits.And then I actually have options of three different agents that I can speak with at one time.And sometimes during the course of the project, you'll actually find that once one specific component is finished and the feedback goes back to the team lead, the team lead will create some new project and actually spin up new agents to work on the next part of the build.So it gets pretty advanced and it's also really fun to see.There we go.So we're actually spinning up different agents now.
+
+18
+00:06:59,120 --> 00:07:22,960
+So task one assigned to the UI builder, build the HTMLstructure and CSS theming create the foundational HTML structure.We've got a skeleton given to it and actually a very clear set of instructions for this builder.And now we can see then below if I hold down shift and I toggle up and down we've got the team lead just as before then we have the JavaScript dev which is the new agent that was just rated and then we have the UI builder.
+
+19
+00:07:23,200 --> 00:07:51,840
+Coming back to our first agent let's just click accept on these permissions and there we go it's actually just finished.Now let's pull this up.Okay so this looks really cool.We haveViews on our side, due date, priority, projects.We also have toggle for night mode and day mode.Let's create a new task.So cook, dinner, I'll leave the description empty.We pop up a little calendar.That's awesome.Subtasks, even subtasks, that's cool.
+
+20
+00:07:52,160 --> 00:07:54,800
+So buy food, let's hit enter.
+
+21
+00:07:56,040 --> 00:08:24,080
+All right, just click new subtask, cook food, and then a new one, eat food.So that's interesting.It's like a layered, it's like a folder.It's like a layered task.Typically, like from demo task managers that I've built, it's usually one top layer and then you just click close in a top layer, but now you have little subtasks, which is what a lot of actual like ClickUp, like actual task managers do.They'll have subtasks within a task.So that's really interesting.We have active task completed.
+
+22
+00:08:24,080 --> 00:08:53,200
+So if I actually just click one, two, and if I click this cook dinner,And it goes into the completed view.That's nice.And let me just see if I right click on here.Okay, we have edit, reopen.Now this functionality is actually insane.I actually can't believe that.I can change priority by doing the right click on here.Move to inbox, move to work, move to personal.Okay, so we have different views over here.So personal view shows that project.Let's move it across to inbox now.
+
+23
+00:08:55,480 --> 00:09:22,080
+And it moves.This is beautiful.This is really nice.This is Opus 4.6 on its own, and that is very impressive.And if we delete that, then let's go to create a new project as well.I'm gonna call this dinner.Let's click enter.There we go.So as this stands, this is actually very impressive.It looks really good.It doesn't look like it's been made by a botch AI, like a lot of the older apps that we'd be building across the last few months.And on top of that, this is usable.It's immediately usable.
+
+24
+00:09:22,400 --> 00:09:49,320
+The functionality is very easy, very smooth to use.And it gave us a bunch of different sections, due dates, priorities, and projects as a starting point.This is fantastic.You could literally use this to run your personal life without buying another tool.So now back in the agent team, we see there was a shutdown request because all the tasks were completed.Let's fire this up and see how it looks.Okay, so this looks really interesting.The first thing I want to note is that the name was the exact same as that first version from the single agent task flow.
+
+25
+00:09:49,680 --> 00:10:17,440
+Otherwise, this looks a lot more polished.We have the night mode and day mode with a bit more of a transition between both.Let's add a task here when it's to be done.Cook dinner, leave a description for now.We can choose the date.So it looks like the date creation function or the task creation functionality is very similar.Now we've got subtasks here as well.So buy food, add a new one, cooked food, and if I hit enter, okay, just creates the task, nice.
+
+26
+00:10:17,960 --> 00:10:43,040
+So let's actually go back to edit this and have one more eat food.We can't forget about eating the food.Save the task.If I click on write.Okay, so our options here are a little bit different.We can edit the task, duplicate or move it to a different section and we can just choose numbers here.So that navigation panel is a little bit different.If I just come back into here and quickly create an eat food task.
+
+27
+00:10:43,640 --> 00:11:08,400
+and I create this, if I do the right-click here, I've got a lot more of a navigation panel.It looks a little bit less polished, less refined, but it is, in my opinion for me, a bit more usable, because I just like having everything easy access here.But you can definitely see this side panel over here, it does look a lot more polished, so I'm just going to quickly flip across for both.This is that single agent one.We're using more of these emojis.
+
+28
+00:11:08,400 --> 00:11:34,320
+We could definitely go back and refine this and say don't use the emojis, but I do like how it's more filled out over here.But then the agent team one does look a lot more refined.So I actually like the side panel here.It's very nice.We didn't have the settings panel in the first version, but if I click this, it doesn't actually go anywhere.And if I go onto board view, it doesn't go anywhere as well.So I'm just going to come back to the agent team.I'm going to click escape to return to the team lead.
+
+29
+00:11:34,320 --> 00:12:04,160
+I'm just going to say, can you confirm the JavaScript is working because some of the buttons, which was settings or board view, they don't work.So let's see what happens when we try and fix this.So there we go, looks like we have a fix.Now the board view and the settings buttons will actually do something.So now coming back to our task manager, if I click on board view, nice, actually looks like we can drag and drop between here as well.
+
+30
+00:12:04,160 --> 00:12:30,240
+So the board view now works and it changes the status as we drag it to a different section of our pipeline between urgent to high to medium.It actually applies that to the task as well.And now let's check out the settings panel.So over here we have light mode or dark mode.Okay, default view and then we have export data as JSON or import and then clear all data.So now to do a postmortem between both builds, eitherusing the single agent or the team of agents.
+
+31
+00:12:30,480 --> 00:12:59,600
+The single agent took six minutes and 55 seconds to build out the task manager.And I actually like how this looks more than the agent team app.I like that they're using emojis over here.It's a bit more fun.It makes me want to create tasks and follow through with them.And then looking at the agent team, the first part of the build was actually a little bit faster.So it was four minutes and 50 seconds versus six minutes and 50 seconds.So two minutes faster.But then we had to come back and rework the Kanban board button and also the settings button.
+
+32
+00:12:59,840 --> 00:13:24,920
+And that added an additional 1.5 minutes to our build time.So I would say the build time is like for like.And in this portal, while I don't necessarily like the UI as much as the first one, I could definitely fix it by prompting up.I do like that it went a little bit deeper and it had the board view and I do like the settings panel.So I didn't even prompt up that I wanted a settings panel.I didn't even think of having an export or an import functionality to take tasks between workspaces.
+
+33
+00:13:25,280 --> 00:13:52,880
+So I've been testing the new Cloud Opus 4.6 model on some other projects that I've been building.I ended up building a car dealership portal that runs tasks.It has a database on Supabase.I installed the Supabase MCP into the 4.6 model and was able to integrate a database for authentication and start building a bit of the backend so it can actually create customers, create tasks and jobs and all this stuff.So that was very interesting.If you guys want to see more of an advanced build, please let me know in the comments.
+
+34
+00:13:53,040 --> 00:13:54,400
+Thanks for watching and I'll see in the next one.
+

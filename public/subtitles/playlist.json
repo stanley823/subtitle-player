@@ -120,11 +120,35 @@
     "secondary": "Spec_Driven_Workflow_with_Claude_Code_4_-_Implementing_the_Plan_zh-TW.srt"
   },
   {
-    "playlist": "other",
+    "playlist": "Agent Teams",
     "num": 1,
     "short": "TMUX + Claude Agent Teams",
     "url": "https://www.youtube.com/watch?v=Dyj9ShddyMw",
     "primary": "TMUX_+_Claude_Agent_Teams_=_Game_Changer.srt",
     "secondary": "TMUX_+_Claude_Agent_Teams_=_Game_Changer_zh-TW.srt"
+  },
+  {
+    "playlist": "Agent Teams",
+    "num": 2,
+    "short": "Agent Teams Are Insane",
+    "url": "https://youtu.be/VWngYUC63po?si=cfdt3jClHLoisakQ",
+    "primary": "Claude_Code's_New_Agent_Teams_Are_Insane_(Opus_4.6).srt",
+    "secondary": "Claude_Code's_New_Agent_Teams_Are_Insane_(Opus_4.6)_zh-TW.srt"
+  },
+  {
+    "playlist": "Agent Teams",
+    "num": 3,
+    "short": "Agent Teams in 13 Mins",
+    "url": "https://youtu.be/y9IYtWELMHw?si=MdPG7FCFGd-XsrmP",
+    "primary": "How_to_Use_Claude_Code_Agent_Teams_in_13_Mins_(Opus_4.6).srt",
+    "secondary": "How_to_Use_Claude_Code_Agent_Teams_in_13_Mins_(Opus_4.6)_zh-TW.srt"
+  },
+  {
+    "playlist": "Agent Teams",
+    "num": 4,
+    "short": "Build Agent Teams",
+    "url": "https://youtu.be/rFVD5JzOgAc?si=5dvNizn11rd2tfNV",
+    "primary": "Build_Multi_Agent_Teams_within_Claude_Code.srt",
+    "secondary": "Build_Multi_Agent_Teams_within_Claude_Code_zh-TW.srt"
   }
 ]

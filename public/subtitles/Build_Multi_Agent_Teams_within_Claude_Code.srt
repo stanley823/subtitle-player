@@ -1,0 +1,176 @@
+1
+00:00:00,280 --> 00:00:29,960
+What if instead of one AI coding assistant, you would coordinate an entire team of AI coding assistants that work parallely on the same project and handle separate tasks together?That is exactly what Cloud Code made accessible for everyone.And it is called agent teams.Using just plain English, you can get an entire team of AI agents working for you parallely.And in this video, I'm going to show you exactly how you can orchestrate your own AI squad.So if you're ready, let's get started.For the people who are watching me for the first
+
+2
+00:00:30,080 --> 00:00:59,960
+time.My name is Yashika Jain.I'm an AI automation expert and my job is to use AI to convert manual tasks into automated processes so that businesses save a ton of time, money, as well as headaches.If you're interested in working with me and my team, don't forget to check out the description.If you want to keep seeing similar content, don't forget to subscribe to the channel.Now let's get started.So let's quickly understand how Asian teams work within Claude Code.So at the very top of the hierarchy, we have the team name, which is the main Claude Code session whose
+
+3
+00:01:00,040 --> 00:01:29,840
+job is to create the team, create its teammates and then coordinate tasks.Then obviously we have the teammates that work under the team need and all of these are separate cloud code instances working parallelly on their assigned tasks.Then we have a shared task list where all the tasks that have to be done are clearly mentioned and the teammates claim them one by one and mark them as complete once done.And then we have the mailbox, which is basically the communication system between the agents.
+
+4
+00:01:30,160 --> 00:01:59,960
+Now, when exactly should you use agent teams?So let's have a look at what Claude Codes documentation says.So it says that agent teams are most effective for tasks where parallel exploration adds value.So when you need different angles or perspectives, that is where Claude Codes agent teams can really help you.And that is exactly what the first point is talking about, which is if you want to investigate different aspects of a problem, you can use agent teams.Apart from that, if you want each teammate to have their own separate piece without stepping on one another,
+
+5
+00:02:00,240 --> 00:02:28,160
+then again, this is a great use case to use.The other great one could be debugging.So if you want teammates to test different theories in parallel and converge on the answer faster, then you can use them.And the last point, which is also my personal favorite, is the cross-layer coordination.So if you want, you can assign different fields to different agents.Agent one works on the front end.Agent two works on the back end.Agent three is working on the tests.So that is what is cross-layer coordination.So for me, it comes down to two use cases.
+
+6
+00:02:28,160 --> 00:02:52,800
+So if you want to get opinions from differentperspectives you can use agent teams and secondly if you want to parallel play on different tasks then you use agent teams.Alright so that's about it now how do we exactly use it.So the process remains the same regardless of if you're using cloud code within a terminal or if you're accessing it through an IDE all you have to do is follow along.Alright so I'm within VS Code and let's go ahead and open a folder.Now let me go ahead and start a new terminal.
+
+7
+00:02:52,880 --> 00:03:19,360
+Even if you're using your own terminal or command line prompt you can follow the same steps that I'm doing here.By the way if there's someone who wants to learn the basicsfundamentals of Claude code, then I'll link another video above here, which is basically a beginner's guide to Claude code.All right.So if you already have Claude code installed, great.If not, just search for Claude code, go to the first link and copy this command right here.Come back here, paste it in the terminal, hit enter.All right.
+
+8
+00:03:19,360 --> 00:03:44,440
+And within a few minutes, it will install Claude code directly as easy as that.And then you just have to type Claude.Now it's doing a quick security check.So just select yes and hit enter.All right, so we have Claude up and running.If it is asking you to log in, just simply do that and then you will land right here.I am doing it through API usage at the moment.Now, the first thing that we have to do before we go ahead and set up agent teams is to change the model.
+
+9
+00:03:44,720 --> 00:04:13,680
+So just add a forward slash, type in model, hit enter.And there you will see that the default model, which is Sonic 4.5 is selected, but we would essentially like to select Opus 4.6.Now for effort, you have three options, low, medium, high.Since we're just exploring at the moment, I think low is going to be fine.But if you're working on actual tasks, then don't forget to change it to medium.So we've selected low here and now let's hit enter.Now we're all set to go.
+
+10
+00:04:13,920 --> 00:04:40,720
+If you want to do a quick test, you can say hi and see if it responds.Great.Now, if you come back to the documentation, you will see that agent teams are experimental and are disabled by default.Meaning if you just install Cloud code, that doesn't mean it enables agent teams for you.So in order to enable them, you will have to add this to your settings or JSON or environment.And they're also stating that agent teams have limitations right now.
+
+11
+00:04:40,720 --> 00:05:09,200
+So you can think of it this way that agent teams is in beta mode right now.So now let's go ahead and add this so that we can start using agent.Coming back to the terminal, just open a new one here.So we're going to run three commands to enable agent teams.The first is this one, which is going to create this particular directory.Now, every command that I copy paste, any prompt that I use would be available for you to copy paste.You'll find that in the resources linked in the description.It's going to be free to access.
+
+12
+00:05:09,200 --> 00:05:33,520
+So that is the first command and let's hit enter.All good there.And then this is the second command, which is going to basically add that to settings.json.So just paste it, hit enter.All good.And now let's quickly verify it.So that's the third command.And there we go.So if you're seeing this, then that means that it has been added successfully.So now our Claude code instance is ready to create agent teams.
+
+13
+00:05:33,840 --> 00:06:03,840
+In a new terminal, we're again going to type Claude and just make sure the model is Opus 4.6.So now let's go ahead and give it a prompt to create an agent team.Now remember, every time you're telling it to create an agent team, you must mention create.an agent team.Otherwise, it's just going to do it itself and it's not going to create those parallel clot code instances.Now, it's not necessary that you start the sentence with this, but somewhere in your prompt, you must explicitly mention these words.
+
+14
+00:06:04,280 --> 00:06:32,560
+Apart from this, you don't need to worry.In just plain English, you can tell it what you're trying to achieve and which different teammates or agents you would like to create.So let me give you an example so that you better understand it.So here's my simple prompt.I have started by telling it that I'm considering using OpenClaw for my project.So I'm not sure if you've heard about OpenClaw, but it is this AI agent that has got a lot of hype in these previous days and has divided the internet into almost two different groups.
+
+15
+00:06:32,800 --> 00:06:59,840
+There's one group that is using iteverything and there is this other group which is concerned about security.Well, I am somewhere in the middle of that, but just to give you an example, I have asked it to create an agent team to analyze security from different angles.One of the agents is going to evaluate the security risks and attack vectors, for example, prompt injection, etc.The other agent is going to research the best practices and mitigation strategies.
+
+16
+00:07:00,080 --> 00:07:23,560
+The third agent is going to play devil's advocate on whether it should be used inat all.And then there's going to be a fourth one that is going to identify appropriate versus inappropriate use cases.Then I've told you that have the team lead synthesize all the findings into a final verdict with clear recommendation.Always delegate and wait for the teammates to complete their task before proceeding.
+
+17
+00:07:23,840 --> 00:07:50,680
+So let's hit enter and let's see how this main cloud code session creates different cloud code sessions, which are teammates, which are going to do their own findings, their own research, and thenAnd let's see how it comes up with the final report.Why this topic is very interesting is because everyone has different perspectives about it.So it's a great example.All right, so now let me hit enter and Claude Code is doing its work.So it's saying that I'll set up the agent team.
+
+18
+00:07:50,680 --> 00:08:16,800
+Now let me launch all four analysts in parallel.All right, so now it's asking me if it can use the web search tool which is needed to search the web and it is an inbuilt tool.So I'm just going to say yes and I'm also going to ask it to not ask it like each time.So as you can see, we have four different task agents here.The first is the security risks and attack vectors.Second is best practices and mitigations.
+
+19
+00:08:17,120 --> 00:08:42,640
+Third is devil's advocate analysis and the 4th is appropriate use case analysis.It is also mentioning the tools that it isusing and also the tokens.Now, obviously, if you use agent teams, it is going to cost you more tokens as compared to a single session.That is like common sense.But the end result that you're going to get is going to vary and you can press control O to expand.So let me do that.There we go.So here you can see everything in detail.
+
+20
+00:08:42,960 --> 00:09:11,280
+For example, this is the prompt for the devil's advocate analysis.So here we can see that all four analysts are working in parallel.Let me wait for their reports to come in.Now, this is basically thethe main team leader, which is reporting everything to us.And here you can also go to these one by one.So for example, let's go to this one.So you can have a look at the progress.You can have a look at the prompt.You can go back.All right.So it seems my API balance became too low.So let me go ahead and add funds.All right.
+
+21
+00:09:11,280 --> 00:09:24,600
+So I just now added the balance.So let me just tell it to continue.So now you know how to handle this situation.All right.And within the blink of an eye, it has been completed.Now it could be a little difficult to read it from here.So let me just ask it to save
+
+22
+00:09:24,720 --> 00:09:52,780
+this analysis to a file now it is asking for my final permission so let me just allow it quickly all right and as you can see the file has been created right here so let me just do this let's close this and now let's read it so open claw security analysis team lead final synthesis so it has started by introducing what is open claw nowNow, here's the analysis from the first teammate, which is security risks and attack vectors.
+
+23
+00:09:53,020 --> 00:10:22,780
+Now, mind you, all of these teammates are working independently, meaning analyst two would not change its opinion based on what analyst one said.It is the final team leader which synthesizes all of their opinions.All right, so here's what analyst one is saying.So let's read the main, main things.So 512 total vulnerabilities, eight classified as critical, 135,000 instancespost credentials stored in plain text 341 malicious skills.
+
+24
+00:10:23,060 --> 00:10:50,380
+Prompt injection is fundamentally unsolvable.Now here's analyst two.So it's giving you the best practices and mitigations so you can read through it is also giving security focused alternatives, for example, any 10 and similar ones.So now here's analyst three, which is devil's advocate, which is my personal favorite.It's kind of roasting open claw.So I ship codeI don't read.Three name changes.
+
+25
+00:10:50,460 --> 00:11:19,420
+Production failures are catastrophic and silent.Regulatory compliance is impossible like HIPAA, SOC 2, GDPR.Moldbot breach exposed 1.5 million API tokens.Then there's Analyst 4, which is appropriate versus inappropriate use cases.So it's appropriate for personal productivity automation, individual developer hobby workflows, AI agent experimentation and learning in sandboxed environments.small team pilots.
+
+26
+00:11:19,740 --> 00:11:47,660
+It's inappropriate for production enterprise systems, multi-tenant SaaS platforms.You know, basically what I told in my video at the very end, just in case you're interested, I'll link it somewhere above here.So now here's the team lead verdict.So it's saying that OpenClaw is a genuinely innovative product that demonstrates the future of autonomous AI agents.However, its security posture as of February 2026 is alarming.Then it's telling you if you decide to proceed anyway, follow these.
+
+27
+00:11:47,980 --> 00:12:17,860
+Then here's the bottom line, and it's also giving the sources from where it has found all of this information.So was it a good report or not?Now, if you give the same job to, let's say, ChatGPT or Claude, or if you just give it to like one Claude code instance, you will see the difference.You can compare it for yourself.So that was one of the examples where we tried to, you know, get parallel perspectives from different analysts and then different teammates and then consolidate them into a final report, which we have already got.
+
+28
+00:12:18,380 --> 00:12:48,020
+And now let's put it to work and let's get something useful out of it that we can use inside our work.So let's close this coming back to the terminal.Let's start a new one.Let's type Claude.All right.Opus 4.6.So this time I'm telling it, create an agent team to write a LinkedIn post about Claude code agent teams.So we're going to be using it to write a LinkedIn post.But what is different?So teammate one researches about the topic, the data, the examples, technical capabilities,
+
+29
+00:12:48,100 --> 00:13:02,780
+adoption patterns, etc.Teammate 2 writes the first draft, okay?Teammate 3 rewrites it in my voice.Then I've told it how my voice is for LinkedIn.Then teammate 4 critiques everything.
+
+30
+00:13:03,940 --> 00:13:31,340
+points out loopholes, flags, weak arguments and cliches.And teammate five optimizes for virality, multiple hook options, LinkedIn formatting, you know, and then the lead synthesizes everything into the final post with alternative hooks.Each teammate waits for the previous one to fetch.So this time I've just chosen the topic as Claude Code agent teams.So let's go ahead and see what it creates.
+
+31
+00:13:32,100 --> 00:13:59,020
+All right, so we have a final output.So this is the post it came up with till here.And then it is also given three alternative hooks.Let's go through this.16 AI agents just built a production C compiler in two weeks.A senior team would take six months.I spent 20k in compute.A human team would cost 300k.Obviously, it just came up with these numbers because I just told it to write a LinkedIn post on plot code.
+
+32
+00:13:59,340 --> 00:14:29,020
+Agent teams, I didn't give it much context, but the tone looks good.It sounds human-like and it is...Very much like a LinkedIn post for sure.So now this is where skills are going to come into play.Firstly, I won't be writing a LinkedIn post just once.I have to write it every few days and I wouldn't write this prompt each and every time.Instead, I would just like to give it the topic and it should follow this exact process to give me the final LinkedIn post.
+
+33
+00:14:29,420 --> 00:14:58,700
+Apart from that, I would like to also give it context about who I am, what I do, and, you know, my previous LinkedIn posts, etc.that it can reference to every time it is creating a new LinkedIn post for me.So that is why I'm going to ask it to create a skill called LinkedIn post that uses these agents in the exact same manner.And the only variable is the topic.
+
+34
+00:14:58,860 --> 00:15:28,860
+So basically I give it the topic and then it does the entire same process again.Now I have kept it short, but then you can also mentionpointers about yourself, about the types of LinkedIn posts you create.You can also mention about your target audience and we'll make sure to add all of it in the skill.And that is going to be referenced to every time a new LinkedIn post is generated.So it is giving the final draft of the skill.You can have a look at the skill you can read through and let's go ahead and allow it.
+
+35
+00:15:29,260 --> 00:15:52,940
+All right.So the skill is now available globally across all your projects.And it runs with the exact same six agent sequential pipeline.And how you use it is that you mention the name of the skill and then you mention the topic for your LinkedIn post.So let me just open a new terminal.Let's type Claude here.All right.And here, as soon as I enter the forward slash, I'm able to see my skill.
+
+36
+00:15:53,180 --> 00:16:22,460
+So write a LinkedIn post using a six agent team pipeline, teammate one researches, teammate two drafts, etc.So let's just type LinkedIn post and now I just have to typetype the topic here.This time, let me give it much more context.All right, so I've basically given it more context about cloud code and agent teams and like what are its functionalities.And then at the end, I've mentioned that I have a video coming on this the coming week.What are your thoughts about it?Now let's go ahead and hit enter.
+
+37
+00:16:22,620 --> 00:16:52,540
+So we've got the result.Let's have a look.Final post.16 AI agents compiled a bootable Linux 6.9 kernel from scratch.100,000 lines of C code, 20,000across 2000 sessions.This is the first multi-agent system that I have seen that works like an actual dev team and I have tested a dozen.Each agent gets its own context window and communicates directly with teammates.One agent leads and the rest execute specialized tasks independently.
+
+38
+00:16:52,820 --> 00:17:22,220
+Where it shines, where it falls apart, a developer using it told me the biggest surprise wasn't the technical capability, it was how much it feels like managing actual junior engineers.We're moving from write this function prompts to here's the problem, figure out who does what.All right, not bad, but a lot of this came from the internet, which I would otherwise not include in my LinkedIn post.So I don't know if that's a good thing or a bad one, but I like the way it is closing it.
+
+39
+00:17:22,460 --> 00:17:32,540
+But yes, it is completely LinkedIn ready.So if you ever want to make any changes to it, you can simply tell plot code to make change to that particular skill.For example, let's say
+
+40
+00:17:33,980 --> 00:18:03,860
+don't want it to, you know, include these lines or make false, you know, promises that you have actually not done in real life.So you can make cloud code make a note of it in the scale.So I'm not sure if you've noticed, but we have created a complete workflow.In any time, it would look like a huge workflow with multiple nodes and AI agents.But here you are not seeing it.But on the back end, a lot of work is being done.And we were able to achieve it using plain English.And the best part things
+
+41
+00:18:04,060 --> 00:18:33,860
+are just going to get better from here.This is in beta mode right now.Just imagine where this technology is going to go by the end of this year.Similarly, you can use Cloud Code's agent teams to work on your existing code bases, to work parallely on different tasks.There's no need to create a skill each time until and unless you decide to use that pipeline, those agents in the same manner again and again.So that was a breakdown by me on agent teams.I really got excited the first time I heard about it and it kind of made-up to
+
+42
+00:18:33,980 --> 00:19:00,700
+80 to 90% of my expectations.It's still lagging a little bit, but as I said, it's just going to get better from here.Alright, so that was my breakdown on agent teams.I hope the concept of agent teams is crystal clear to you and you're going to go ahead and start using it.Use it where it makes most sense and get the most out of it.So yeah, that was pretty much it for this video.I really hope you got value out of it.If that was the case, don't forget to like the video and do subscribe to the channel.
+
+43
+00:19:01,020 --> 00:19:25,180
+If you're interested in transforming your business with AI andautomation don't forget to check out our website the link is in the description you can go through the website and if you're interested you can book a discovery call with us.If you're interested in getting on a 1-1 call with me you can check out the link to my consultation calendar in the description.If you want to continue seeing more content like this in the future don't forget to subscribe to the channel and make sure you turn on the bell notification.
+
+44
+00:19:25,420 --> 00:19:34,380
+If you want to connect with me personally you can send me a connection request on LinkedIn.So yeah that's pretty much it for this video I will meet you in the next one till thenBye.
+
