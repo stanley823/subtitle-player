@@ -1,0 +1,156 @@
+1
+00:00:00,160 --> 00:00:12,560
+Sending your designs from Figma to code is everyday thing already.But what if I could take your existing code, generate a design from it, fix it in Figma, and then send it back to your project, pixel perfect with the code.
+
+2
+00:00:12,760 --> 00:00:42,680
+Automatically updated and that is something new thanks to the latest update from Figma and Claude code This workflow is finally possible in this short tutorial I will show you exactly how to set up Claude code on your computer step by step Then we'll run Figma MCP generate UI directly from the terminal and send it to Figma make some design changes and then Sync those changes back to the original code.I believe this might completely change how designers and developers
+
+3
+00:00:42,880 --> 00:01:11,840
+collaborate.So let's get started.And by the way, if you're new to this channel, my name is Sergey.Here I talk about Figma, Framer, Vibe coding, and AI.So don't forget to subscribe if you haven't already and like the video if you like it.All right, so first things first, you need to install Cloud Code to your computer.And there are several ways to do it.We'll start with the most common way is installing it through a terminal.For me as a designer, to tell you the truth, I hate
+
+4
+00:01:12,280 --> 00:01:42,200
+terminal because I think it's more for developers, but the times are changing and we as designers, we need to know how it works.So let's go to code.claude.com/docs/quickstart.And here we'll need to find installation guide.The step one is here.I'm using a Mac OS, so I will use this command.So I'll need to copy it.And now I need to run my terminal.How to do
+
+5
+00:01:42,280 --> 00:02:11,600
+To do that is really easy.I need to press F4 on my keyboard or search and search for terminal app and launch the terminal app.Here I need to paste my own command that I just got from the docs and I just press enter.And now I will run the command of installing Claude code to my computer and I have it already installed but I will do it again just for you to see how it works.
+
+6
+00:02:12,120 --> 00:02:41,040
+So basically now, so after Claude is installed to your computer, you need to run a Claude command.So it's basically the step two here, you need to log into your account.So let's run Claude and we'll see this kind of cartoony style welcome.And now I need to choose the type of mode I'm gonna use, I want to use the dark mode.Okay, dark mode.
+
+7
+00:02:41,040 --> 00:03:06,960
+And now I need to connect it to my account.So I'll need to press enter and I go to my account and I need to click authorize.I see that login is successful.So I press enter and yeah, and that's it.So we're done.We have the Cloud Code installed to our computer.After you have installed Cloud Code and logged in,
+
+8
+00:03:07,640 --> 00:03:37,200
+you need to open the folder of your project this is the same thing as you do for example with cursor or if you use a cloud app you need to open the folder for your project so this is like the first step and this is how you can do it I don't like to paste things and type in the terminal again as a designer so I just go to my folder that I've created and here in the bottom I have the linkto my folder and I just click open in terminal.
+
+9
+00:03:37,680 --> 00:04:02,880
+And now I've opened my folder in terminal.I can close this folder and I just type Claude here.I'm located in the side of the folder and here I just run it and you can see that I've opened my Claude and I actually I installed it and now I run Claude inside of my folder.
+
+10
+00:04:03,960 --> 00:04:32,720
+And next what we need to do, we need to connect it to the MCP, Figma MCP server.And this is how you can do it.You go to codecloud.com/docs/emcp.I will leave all the links in the description below, don't worry.And here you need to find Figma.You just copy this command.You go to your terminal with your Cloud running and you just paste your command here and you press run.
+
+11
+00:04:33,120 --> 00:05:02,800
+Here we can see that it asks us to have the approve.And yes, I click approve that I want to run it.Now it's running the plugin.You need to restart Cloud Code for the new MCP to take an effect.Once connected, you will be able to use it with Figma URLs.All right, so, um,I will restart Cloud Code and here I can click Ctrl C for Windows or Command C for Mac.So I'll click Command C and run.
+
+12
+00:05:03,520 --> 00:05:28,240
+All right, so it's done.So it's running.Let's start a new terminal just in case.So I'll terminate this.After you connected the Figma MCP to Cloud Code, the next step is to install Figma plugin.And here you need to open your folder again.And now you need to run a command, which is, looks something like this.
+
+13
+00:05:28,320 --> 00:05:56,240
+Cloud plugin install Figma at Cloud plugin officials.I will leave the link to this in the description below again, so you don't need to search for it.And now I just press enter.And here we can see that successfully it installed the plugin.After you have installed the plugin,You just type in here slash plugin and this will come up.
+
+14
+00:05:56,960 --> 00:06:24,320
+Here you'll need to use your arrows on the keyboard left and right and you want to select installed and here you will be able to see local and you will be able to see Figma Remote MCP.And this is the sort of like error message that we saw earlier that we need to authorize and log in to our Figma profile.So you select it and click enter.
+
+15
+00:06:24,320 --> 00:06:52,880
+So basically you can see like the little arrow on the left and click enter.And now we'll need to authenticate and I just press enter andwill see that my browser just opened and here I need to allow access to my Figma account.So I need to agree and allow access.authentication is successful.And here we can see in the terminal that everything is okay.
+
+16
+00:06:52,880 --> 00:07:19,920
+Congratulations, we have completed the installation process of cloud code through the terminal.And just a quick note how you can do it another way.You can go to cursor, for example, if you use cursor and you will need to go to this plugins section and search for extensions in the marketplace and you will need to find a cloud code for VScode and you'll just need to install it.
+
+17
+00:07:19,920 --> 00:07:48,800
+I have already installed it to my cursor, so you will need to install it here.And then after it is installed, you will be able to see it through this chevron over here.So you just click on it and you'll see extensions and you will see Cloud Code.And when you launch it here, you will launch the Cloud Code inside of yourCursor so but you will need to log in to your Cloud code account.So it is separate from the cursor.
+
+18
+00:07:48,800 --> 00:08:12,480
+So just to keep in mind that You don't need to pay for cursor at this moment because you're using cloud code inside of cursor But if you're going to be using cursor for editing and you'll be using agent mode in cursor, you will need to pay for all the tokens or you can of course try to do it in the free mode andAnd one more way to use cloth code is
+
+19
+00:08:12,660 --> 00:08:40,659
+to install the official uh Claude app uh here it is so you have a basic chat window like a regular one where you can chat like using ChatGPT for example so this is just uh regular um agent mode and there is a thing called code so basically this is the the prompting uh where you can use it and umNo need to go to the terminal.So you can basically type stuff here.
+
+20
+00:08:40,659 --> 00:09:10,660
+You can connect it to your folder again and or you can connect it to the GitHub or use it as a cursor basically.And again, you don't need to go to terminal.We're back in our terminal with cloud open in my folder.And here let's try to prompt something.I will use this prompt, build a dashboard for home electricity monitoring.And I'll just hit enter.And now we can see that it is working.
+
+21
+00:09:10,980 --> 00:09:38,500
+It recommends to install a GitHub app so we can use it connected to our GitHub account.But again, this is for terminal.And if you use, for example, like an app, the Claude app, you connect everything here using extensions inside of your app.Again, you need a pro account for this and same thing for Corsair.All right, so here it asks me to proceed.
+
+22
+00:09:38,580 --> 00:09:51,780
+All right, so I'll press enter and let's wait.For this demonstration, let's use a plain HTML.All right, so we can see that it created the HTML code already and now I can...
+
+23
+00:09:52,820 --> 00:10:21,620
+Press yes because I want to create index HTML file.So I press yes, and it should save it to my folder And here's my folder it already saved so everything's nice here and So let's launch it and let's preview it in Safari All right here it is so it looks pretty good.We can see that it's live it works
+
+24
+00:10:22,380 --> 00:10:31,860
+see we have some information here, the dark mode.It's pretty nice.And also it is responsive.So the result is pretty cool, right?
+
+25
+00:10:33,060 --> 00:11:00,100
+Yes, it looks pretty generic, but this is from a super simple small prompt.We from the terminal, we got our designs.And now the most interesting part is to send the designs to our Figma file and to work with them in Figma and then update them and send them back.So let's try to do it.So basically I'll tell him put the designs in Figma file.
+
+26
+00:11:00,980 --> 00:11:14,100
+And I have my Figma file opened over here, probably you noticed it.And I'll just copy the link to it and I go back to terminal and I'll paste the link to my Figma file.
+
+27
+00:11:15,180 --> 00:11:20,660
+Now it asks me what I want to do, I just want to click yes and
+
+28
+00:11:22,180 --> 00:11:50,740
+proceed with the next step.All right, so let's check it out.We see that it opened this new file over here again and we see that there is some navigation on top and we can send file to Figma, entire screen, select elements so we can actually like work around and see like select different elements and then we can open the file here butI don't need to do it because I have it already opened.
+
+29
+00:11:50,980 --> 00:12:20,420
+So this was the link to the Figma file that I pasted.And here we can see our designs that we just created in our terminal.And now we have them in Figma.This is like super cool guys.This is amazing.For example, I want to change the background like this or white.Let's do it this way.And let's change the colors on this thing.Change it to something like this.
+
+30
+00:12:20,500 --> 00:12:49,380
+AndThis one is going to be lighter.All right, so I prefer to use darker background over here.So I'll just do it this way and that's it.For example, right?And here we'll use darker version and here I'll use light, okay?And here, for example, I will use something like this darker version.Here I will use again dark.Let's do it in black like this and here again, I want to use darker, all right?
+
+31
+00:12:50,060 --> 00:13:16,740
+So let's say I did some changes, right?And I want to push it back to my code.For example, as a designer, I made some changes and now I want to push it to the production or to the stage for the developer, right?So I need to select the frame.Now go to copy and paste and copy link to selection.And now I go back to terminal and I'll tell him,
+
+32
+00:13:17,580 --> 00:13:42,660
+update the designs or the design from Figma file or based on Figma file, but let's see how it's going to work.So let's check it out.Yes, I want to proceed and let's see how it's going to work.All right, so it found the differences and now I need to click yes to update the index.html file.
+
+33
+00:13:45,740 --> 00:14:00,740
+Yep.And here it is.We just updated the designs in Figma and pulled all the designs into our production.So into the code.And also we can see like the little summary of what we did.
+
+34
+00:14:01,780 --> 00:14:25,460
+And it's ready.So it's responsive.looks really cool.And everything is updated based on the Figma file.Just a quick reminder that if you want to learn more about Figma Framer or AI and five coding, be sure to check out the link in the description below to my courses and my newsletter.And now a quick demo of using Claude app with a code mode.
+
+35
+00:14:26,020 --> 00:14:54,420
+Basically, we can do the same thing as we did in terminal, but maybe in more visual pleasing way.So I have my folder opened here with myHTML file that we just created.Let's update something here.For example, we'll change the colors of these things and let's change them to red, for example, or like this color.And I will just copy again the link to it and copy the link.
+
+36
+00:14:54,900 --> 00:15:14,340
+And now I'll go to the app and here I will paste the prompt update design from the Figma file.Yep, and that's it.And basically this is what we did in the terminal and we'll just need to wait for our cloud app.So this is update.
+
+37
+00:15:16,300 --> 00:15:45,620
+And now we need to, yep, update the page in our browser and here it is.These are our new colors over here that we just updated in the Figment.Isn't that cool?That's crazy, guys.This is like crazy times we're living in.Completely new flow of using Figma and Cloud Code to work with your UIs.This is for you to think about how you want to use it.
+
+38
+00:15:45,620 --> 00:16:10,580
+You want to use it in the app or you want to use it in the terminal.It doesn't matter, works both ways.And terminal is more like for pro users, but I personally like the app more just for visual sakes.Thank you so much for watching this video.I hope now you understand how you can send your designs from code to Figma, update them in Figma, and then send them back to the code Pixel Perfect.
+
+39
+00:16:10,820 --> 00:16:21,220
+So don't forget to subscribe to my channel to learn more about Vibe coding, Figma, and AI tools.And like the video if you like it.And I'll see you in the next one.Bye-bye.
+

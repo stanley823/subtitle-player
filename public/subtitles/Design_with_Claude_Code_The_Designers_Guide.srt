@@ -1,0 +1,164 @@
+1
+00:00:00,160 --> 00:00:17,520
+Everyone's obsessed with Claude code, but for designers like you and me, what does that mean for us?So today we're going to look at what it is, what to know, how to set it up, how to use it, and how to make the most of it.Let's get started.Real quick before we begin, if you're a big fan of myself, what we're doing here at UI Collective, you can check out our website.I'll put a link for this in the description.
+
+2
+00:00:17,720 --> 00:00:40,640
+And consider supporting the academy where you get access to a bunch of great courses, a bunch of great micro lessons, private Slack channel access for me and the team, and some great downloads too.Or whether you just want to join the community, it's totally free to join the community.You can ask any questions on ourcommunity forum.I respond to everyone that's on there.Also get access to some great savings and some great resources too.So whether you want to join the community or you want to support the academy, hope to see you online.Really appreciate you being here.It's rock and roll.
+
+3
+00:00:40,720 --> 00:01:01,280
+Also made it a goal for the year to start posting more on X and hyping up other designers.So I'll put a link to my X in the video description.Interact with me on there, share your designs.I'll hype you up.I'll give you feedback, whatever you need.Follow me.All right, my people.Design and Claude, using Claude to design, let's go over what to know.Let's dive right in.So Claude code is all the hype these days.
+
+4
+00:01:01,280 --> 00:01:23,360
+If you go on X, you go on any social media site, and you're involved in the tech space, all everyone's doing is just hyping up Claude code and what they're able to produce with Claude code.But what does this mean for us as designers?Because again, a lot of us, majority of us, don't have the level of technical know-how in order to operate some of these tools at a way in which we see a lot of people online do it.
+
+5
+00:01:23,680 --> 00:01:41,600
+Now, it's important to note that if you see people online being like, oh, look what I spun up with Claude code, doesn't mean it's perfect in Figma.Doesn't mean it's going to replace you as a designer.It just means that they were able to build something cool with AI.So just because Claude is for more technical users does not mean that you should ignore it.The one thing you don't want to do right now
+
+6
+00:01:41,920 --> 00:02:07,400
+in the design ecosystem is to ignore AI, ignore the tools that developers are hyped about, because eventually those tools are going to get wrapped in some type of design interface, and then all of a sudden you're far behind.So just because it's for more tactical users does not mean that you should ignore it.And we're going to cover what to do so that you're not ignoring it throughout this video, but I just want to preface with that right away.Now, what is it that you should know?First off, that there's no design interface for Claude code.
+
+7
+00:02:07,400 --> 00:02:10,639
+If you're expecting Claude code to have like a Figma type interface,
+
+8
+00:02:11,880 --> 00:02:37,920
+You can run it in cursor, you can run it into VS Code, Cloud Code is a desktop app, you can run it out of your terminal, but there's no true design interface that us as designers might be expecting.Now, when prompted right, the designs it produces can be fantastic, but again, it does take work to get there.What you'll see on X is a lot of people posting what they've produced,But they don't like tell you the effort that was involved in order to get to that design.
+
+9
+00:02:38,160 --> 00:03:01,680
+It's usually just, oh, we built this with Claude code and everyone thinks it can just one shot like a five star design.It looks like it came out of Google or Apple.Can't do that.But when prompted right, the designs it produces can really be good.You know, it's a really great model.And now it also has a two way sync with Figma, meaning I can do the prompting in Claude, push it via Figma MCP into a Figma file.
+
+10
+00:03:02,280 --> 00:03:26,440
+iterate on it in Figma, maybe show a client in Figma, make some changes in Figma, and then pull that back into Claude.So you can see how powerful that is for a lot of designers and a lot of developers.Introducing this into the workflow where I can do a lot of the heavy lifting in Claude, do a lot of the minor elements in Figma, then bring it back into Claude and iterate that way.Now, Claude code is not like a
+
+11
+00:03:27,120 --> 00:03:50,320
+short form for Claude Opus 4.6, whatever Claude model that's out there by the time you're watching this video.There's a fundamental difference between the two.First off, Claude code, it's sort of the an agentic tool that runs in your terminal or runs on like the Claude app or whatever.So it has direct access to your file system tools so it can do things, not just suggest things.It can make changes to files.It can...
+
+12
+00:03:51,680 --> 00:04:21,440
+understandings.It can build Figma designs, right?Like that's part of like where that two-way sync comes from.But Claude, you know, Model X, you know, in this case, Claude Opus 4.6, it's the underlying...language model of Claude.So it's like the brain.So it takes text in, produces text out.On its own, it has no ability to actually read the files, interact with your system.But Claude code can read files, update files, interact with your system in a way that the Claude model itself cannot.
+
+13
+00:04:21,839 --> 00:04:46,560
+Just wanted to clarify that because it's a pretty fundamental difference and where a lot of designers get mixed up.Now let's go ahead and set up.Claude code and then connect Figma MCP.So it's a little bit different than how we might have connected Figma MCP to something like cursor in the past.Now, we're going to do this actually via our device terminal.More on that in just a second.And I'll put a link for their docs down below.So just scroll down here and find the operating system that you're on.
+
+14
+00:04:46,560 --> 00:05:10,880
+I'm on a macOS, so I would just copy this line right here because, again, this is for macOS.So I would copy that.Now, I'm not too sure how to open it on a PC because I haven't used a PC in a decade.Buton a Mac, like the very top bar, you're going to see a little search, not within Chrome, not within your browser, but at the operating system level, you're going to see a search icon at the very top.Hit that and then search terminal.
+
+15
+00:05:11,080 --> 00:05:31,200
+And then with this line copied here, we're going to paste this line inside of the terminal.So you're going to land in something like this once you open up your terminal again.I'm on a Mac.So I'm just going to paste in that exact line that we got from Claude's documentation and just hit enter.Unreal, so now you can see that it's actually installed.Now, the first time I did this, I ran into issues.
+
+16
+00:05:31,200 --> 00:05:59,920
+If you run into issues, just take a screenshot of what terminal is showing you and then just upload it to Claude or even ChatGPT and have you walk you through how to fix it.So if you get any issues, just have AI troubleshoot.So I just opened up a new terminal.Now, whenever you open up a new terminal, it's just going to appear blank.And if you want to open a Claude code instance, you have to type Claude as I did right here, and then just press enter.So if you hit type Claude, press enter, thisis going to pop up.
+
+17
+00:05:59,920 --> 00:06:26,560
+It's going to show you where you have Claude installed, and now we can start to work with our Figma MCP and do everything else that we want to do.So with Claude all set up on our terminal, what we're going to want to do now is just head over to Claude's documentation.I'll put a link for this in the video description, and just come down here, just copy the...this command right here, and let's navigate back to our terminal.Let's just go ahead and paste in that command that we had just copied into a Cloud Code terminal instance here.
+
+18
+00:06:26,560 --> 00:06:52,960
+So let's go ahead, copy, paste that in, and away we go.So assuming all was successful for you, then paste in this command right here.I'll also put a link to this command, not a link, sorry.I'll paste the command for this in the video description as well.So then just go ahead and then run that.So the show show is installed for you, and it just doesn't show that for meactually already had it installed.What you're going to want to do that, hit slash and then plug in, and this here is going to pop up.
+
+19
+00:06:53,440 --> 00:07:20,080
+So you're under discover, then just use the arrow keys on your keyboard, just navigate towards install, and now you're going to need to go through the process of authenticating your Figma Remote MCP server.So hit enter and go through the installation process as it will go through on screen.So then very similar to what you might have seen in some other tutorials with things like cursor and windsurf, you are going to see this type of a greenaccess page pop up inside of your browser.So just hit agree and allow access.
+
+20
+00:07:20,080 --> 00:07:43,160
+But again, make sure you are agreeing and allow access on the right Figma account, especially for those who have multiple Figma accounts with multiple clients.And just like that, now we're connected to Figma via MCP to Claude.So now we can start to have some fun working with our designs.So now let's just start to test our connection and see what Claude is able to produce fromfrom our terminal inside of Figma.
+
+21
+00:07:43,520 --> 00:08:12,120
+So what I have just copied onto my clipboard right now is just a URL to a regular Figma file, just an empty Figma file.So let's just put in build me a black and purple dashboard for a modern SaaS company, whatever, something like that.And then just paste in the link that we're going to want.want that dashboard built inside.Again, it's just an easy, simple prompt just to get our feet wet here.So let's go ahead now and then run that.
+
+22
+00:08:12,280 --> 00:08:35,000
+So eventually what it did is it produced, and I'm looking up here because I sort of had to move my monitor around and move it on a bigger screen so I can see both at the same time, is what it did is it built the dashboard locally, but then it also built the same dashboard inside of Figma here.So what's nice about it is I can actually take individual elements here.
+
+23
+00:08:36,360 --> 00:09:01,640
+let's select an element, let's select this, and then paste, select that, and then send that to Figma.Now, if I was to extend this out, it just takes it as is.You can see just because I'm condensed down to a screen, like it took like sort of the condensed down version.But if I was just to extend this out here, if I was just to extend this out and then copy this, select an element, I always forget to do that, and then send that to Figma.Notice how it pastes in a little bit cleaner.
+
+24
+00:09:01,640 --> 00:09:26,920
+So there's something for you to take note of right there.So it's going to collapse back in.So you can take the entire screen, you can select specific elements, and what that allows you to do is sort of jam on individualelements here and not having to jam on the entire dashboard at a time.So say if there's only one element that I like here, one group, I just want to send this one group to Figma for me to riff on.I actually have that ability where it then takes that element.
+
+25
+00:09:26,920 --> 00:09:51,480
+So now if I really like this element, I can take the specific ones that I like that Claude Coded produced and then send that to Figma.Again, still looking up here just because I have a larger monitor for me to have more space on.But one thing I'd like to call out is that say I want to get rid of these emojis.Like I don't really like these things that are here.I can delete these, I can delete these, and I can delete these.Now, notice that it doesn't update on the Claude version, run locally right away.
+
+26
+00:09:51,480 --> 00:10:14,240
+So we actually need to do some prompting in order to send that back to Claude.But again, there is that two-way sync now.I'll show you in just a sec.The other thing, too, is you're going to notice is that there's still issues with perfect responsiveness.Again, like all the other AI tools that are out there and that I've covered in other videos, they don't really get it responsive perfectly for a try.If you're expecting to be like, you can get a design, you don't need to do anythingwith it perfectly responsive.
+
+27
+00:10:14,240 --> 00:10:37,240
+Us in a way where like it's development handoff right out-of-the-box.Not there yet.Probably get there in the future, but not there yet.So let's take the changes that we made here.So I'm just going to copy.a link to this selection.Because again, what we did is we just removed those emojis because I didn't really want it.And again, you can do this at a larger scale.It would have been easy to say, Hey, remove the emojis from the top, the metrics.
+
+28
+00:10:37,480 --> 00:10:55,080
+But let's open back up the terminal now and take this Figma URL that we just copied and have it actually rebuild the dashboard or update the dashboard based on the changes that we had made.So now what I can do is I can back into the terminal now, so update the dashboard.
+
+29
+00:10:57,160 --> 00:11:17,240
+cards based on the changes I made here.So then I'm going to paste the link to just those Figma cards that we had tweaked.So then we're just going to send that to Claude.Then look what it came back with.It took the changes that we made to the widget in Figma and then pushed it to the developed side.How wicked.
+
+30
+00:11:17,560 --> 00:11:44,360
+I know we did that on such a small scale, just removing the emojis, but how powerful of a workflow is that, especially on a larger scale where you build a design in Claude, push it to Figma, iterate with your team on the widgets, the components, everything inside Figma, even if the auto layout and stuff isn't perfect right away.And then when you're ready, tell Claude, here's the updated widgets included on the dashboards that we can show a client, a stakeholder, whoever.Come on, people.Unreal workflow.
+
+31
+00:11:44,760 --> 00:12:11,960
+Now, one thing that's important to note is don't condense it down as I did here, just trying to fit things on one screen.Use two monitors or else Claude will get confused around, like, maybe you want a tighter look.You want to adjust the padding.Just do it normally.Don't condense things down as I did.Now, we did all that within terminal, but Claude also has a desktop app.Who knew?So if you download the desktop app and navigate over to code,
+
+32
+00:12:12,800 --> 00:12:39,560
+You can do the exact same thing as we did in Terminal, but in their desktop app.It makes things easier.I started with Terminal to get your feet up with Terminal, something us designers should know, all right?Didn't want to go the easy way out, but you can also do it inside of their desktop app.So let's do that real quick right now.So build me a black and purple dashboard, or
+
+33
+00:12:39,720 --> 00:12:53,960
+Let's go about us page, us page for a modern SaaS.And let me go ahead and actually just grab the same Figma URL.Sorry, I know you can't see the page right here, but I forgot to copy it to my clipboard.
+
+34
+00:12:55,440 --> 00:13:20,760
+So for a modern SaaS, put it in this Figma file.All right, I know, prompting's not great, but whatever.So let's go ahead, let's run that now.Now, it's important to notice you should be doing this in the same folder,But anyways, let's just run that.So now my friends, it did the exact same thing.So whether you do it in terminal, you do it in like the Claude desktop app, you know, whatever, you get a great result.It's cool.
+
+35
+00:13:20,880 --> 00:13:46,680
+I wanted to go through the terminal with you because it's something that we should know and we should get familiar with as more AI tools come out.It's a great thing to add to like your wheelhouse of skills and things that you're familiar with.But again, the Claude desktop app.also works too.Now, I know that's a little bit more of like a technical workflow.It's a technical tool.But there is this tool that came out called Pencil, pencil.dev, put a link for the description, where it's more of like a desire-friendly approach of working with Claude code.
+
+36
+00:13:46,920 --> 00:14:15,800
+So go ahead, download Pencil, again, whether it's like the Mac version, the Windows version, or whatever, and then let's go aheadand look at this.So here I am inside of Pencil, and again, you're going to have to connect like your Claude subscription account, but you can already see how it's a much friendlier version of, you know, what we just did.So I'm going to design with Claude and just say, build me a purple dashboard for a SaaS, you know,
+
+37
+00:14:17,080 --> 00:14:46,760
+platform, whatever, similar prompt to what we used before.I'm just going to paste that in and then see what it comes back with.Now, one thing that's nice about this, you can see it build things in real time.I know it's going a little bit slow right now, so I'll pause.So as you can see, it's building out the dashboard in real time, which is super cool.You can see like, oh, look at that.It's adding like those dashboard cars.Super unreal.As you can see, it's thinking about everything that it's building on the left-hand side, building it out piece by piece.
+
+38
+00:14:46,920 --> 00:15:13,880
+I'll pause the video here and then come back once it's fully built.So look what it came back with.It came back with this dashboard.Looks pretty good.Now, it's not perfect.Like, look, this element isn't fully responsive.Not everything in here works as...as intended.But again, neither does Figma.Now, one thing that is important to note is there's currently no way to take the designs that are done here and then putting them into Figma.There's no option to do that just yet.I imagine it's in Pencil's roadmap of things that they're going to be doing.But this year looks pretty good.
+
+39
+00:15:13,880 --> 00:15:39,400
+It's honestly pretty a little bit better than what you generally see a lot of likeAI design tools do.But again, can't put it to Figma.So it's great if you're just sort of like looking for inspiration and want to build things out fast in a way sort of like an interface that works a little bit better for us designers.Now, one other cool feature of Pencil is they kind of have these pre-built design system or UI kits that you can choose from.
+
+40
+00:15:40,120 --> 00:16:03,040
+So if you have a certain look and feel that you're going for, you can come up here, choose a kit, and have that already applied.Just a cool feature that's nice to have within Pencil.I know there's a ton goingon in this one, jump back and forth between a lot.Thanks for staying with me.If you're a big fan of myself, check out UI Collective Academy or join our free community.I'll put a link for that in the description below.And also, too, if you want to build an entire design system, click in the top left.
+
+41
+00:16:03,040 --> 00:16:09,800
+If you want to watch another video, I highly recommend it, click at the top right.Be sure to drop a subscribe, drop a like.Thanks for being here.See you at the next one.
+

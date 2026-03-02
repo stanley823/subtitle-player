@@ -150,5 +150,21 @@
     "url": "https://youtu.be/rFVD5JzOgAc?si=5dvNizn11rd2tfNV",
     "primary": "Build_Multi_Agent_Teams_within_Claude_Code.srt",
     "secondary": "Build_Multi_Agent_Teams_within_Claude_Code_zh-TW.srt"
+  },
+  {
+    "playlist": "Design",
+    "num": 1,
+    "short": "Code to Figma",
+    "url": "https://www.youtube.com/watch?v=FqQMIQRcdj8",
+    "primary": "Code_to_Figma_This_Changes_UI_Development_Full_Guide.srt",
+    "secondary": "Code_to_Figma_This_Changes_UI_Development_Full_Guide_zh-TW.srt"
+  },
+  {
+    "playlist": "Design",
+    "num": 2,
+    "short": "Designer's Guide",
+    "url": "https://www.youtube.com/watch?v=JMQ0X_si144",
+    "primary": "Design_with_Claude_Code_The_Designers_Guide.srt",
+    "secondary": "Design_with_Claude_Code_The_Designers_Guide_zh-TW.srt"
   }
 ]
